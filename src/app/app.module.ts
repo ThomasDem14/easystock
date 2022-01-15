@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
