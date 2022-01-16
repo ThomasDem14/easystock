@@ -1,4 +1,4 @@
-import {LiveAnnouncer} from '@angular/cdk/a11y';
+import {FormControl, Validators, FormGroup} from '@angular/forms';
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -37,6 +37,8 @@ const ELEMENT_SCHEMA: { [key: string]: string } = {
 })
 export class TableComponent implements AfterViewInit  {
 
+  public itemForm: FormGroup;
+
   displayedColumns: string[] = ['name', 'quantity', 'status', 'isEdit'];
   dataSource = new MatTableDataSource(data);
   dataSchema = ELEMENT_SCHEMA;
@@ -47,6 +49,33 @@ export class TableComponent implements AfterViewInit  {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+  }
+
+  quantityControl = new FormControl('', [Validators.required, Validators.min(1)]);
+  nameControl = new FormControl('', [Validators.required,])
+  statusControl = new FormControl('', [Validators.required,])
+  
+
+  getQuantityErrorMessage() {
+    if (this.quantityControl.hasError('required')) {
+      return 'You must enter a value';
+    }
+    if (this.quantityControl.hasError('min')) {
+      return 'The quantity must be at least 1';
+    }
+    return '';
+  }
+  getNameErrorMessage() {
+    if (this.nameControl.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return '';
+  }
+  getStatusErrorMessage() {
+    if (this.statusControl.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return '';
   }
   
 }

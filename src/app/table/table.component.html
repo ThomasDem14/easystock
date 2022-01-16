@@ -17,7 +17,7 @@
         <div [ngSwitch]="dataSchema[col]" *ngIf="!element.isEdit">
           <!-- content of isEdit column (toggle the isEdit prop) -->
           <div class="btn-edit" *ngSwitchCase="'isEdit'" >
-            <button (click)="element.isEdit = !element.isEdit">Edit</button>
+            <button  class="edit-button" mat-button (click)="openDialog()">Edit</button>
           </div>
           <!-- content of data column -->
           <span *ngSwitchDefault>
@@ -25,18 +25,30 @@
           </span>
         </div>
         <!-- If isEdit is true we do this -->
-        <div *ngIf="element.isEdit">
+        <div [ngSwitch]="col" *ngIf="element.isEdit">
           <!-- content of isEdit column (toggle the isEdit prop) -->
-          <div class="btn-edit" *ngIf="col === 'isEdit'; else dataField">
+          <div class="btn-edit" *ngSwitchCase="'isEdit'">
             <button (click)="element.isEdit = !element.isEdit">Done</button>
           </div>
           <!-- If column is editable we replace content by a form with field -->
-          <ng-template #dataField>
-            <mat-form-field>
+          <!-- Here we do switch on each element to be able to apply controller to them-->
+          <form [formGroup]="this.itemForm">
+            <mat-form-field *ngSwitchCase="'quantity'" appearance="outline">
               <mat-label>{{col}}</mat-label>
-              <input [type]="dataSchema[col]" matInput [(ngModel)]="element[col]">
+              <input [type]="dataSchema[col]" matInput [(ngModel)]="element[col]" [formControl]="quantityControl" required>
+              <mat-error *ngIf="quantityControl.invalid">{{getQuantityErrorMessage()}}</mat-error>
             </mat-form-field>
-          </ng-template>
+            <mat-form-field *ngSwitchCase="'name'" appearance="outline">
+              <mat-label>{{col}}</mat-label>
+              <input [type]="dataSchema[col]" matInput [(ngModel)]="element[col]" [formControl]="nameControl" required>
+              <mat-error *ngIf="nameControl.invalid">{{getNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field *ngSwitchCase="'status'" appearance="outline">
+              <mat-label>{{col}}</mat-label>
+              <input [type]="dataSchema[col]" matInput [(ngModel)]="element[col]" [formControl]="statusControl" required>
+              <mat-error *ngIf="statusControl.invalid">{{getStatusErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </form>
         </div>
       </td>
     </ng-container>
