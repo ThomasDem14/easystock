@@ -9,12 +9,14 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InsertDialogComponent } from './insert-dialog/insert-dialog.component';
 import { MaterialModule } from './material/material.module';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideMenuComponent,
     InsertDialogComponent,
+    TableComponent,
   ],
   imports: [
     AppRoutingModule,
