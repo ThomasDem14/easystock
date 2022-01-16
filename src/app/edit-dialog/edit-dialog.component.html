@@ -1,28 +1,38 @@
 <h1 mat-dialog-title>Edit an item</h1>
 <div mat-dialog-content>
-  <form [formGroup]="this.itemForm">
-      <mat-form-field>
-          <mat-label>Name of the item</mat-label>
-          <input matInput required formControlName="titleCtrl">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Amount</mat-label>
-        <input matInput type="number" min=1 required formControlName="amountCtrl">
-    </mat-form-field>
-  </form>
+    <form [formGroup]="this.itemForm">
+        <mat-form-field>
+            <mat-label>Name of the item</mat-label>
+            <input matInput required formControlName="nameControl">
+            <mat-error *ngIf="this.itemForm.get('nameControl')?.invalid">{{getNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Quantity</mat-label>
+            <input matInput type="number" min=1 required formControlName="quantityControl">
+            <mat-error *ngIf="this.itemForm.get('quantityControl')?.invalid">{{getQuantityErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select required formControlName="statusControl">
+                <mat-option *ngFor="let status of this.dataObject.statusList" [value]="status">
+                  {{status}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="this.itemForm.get('statusControl')?.invalid">{{getStatusErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button (click)="onInsert()"
-    [disabled]="this.itemForm.invalid">Ok</button>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button (click)="onInsert()" [disabled]="this.itemForm.invalid">Ok</button>
 </div>
 
-
+<!--
 <form [formGroup]="this.itemForm">
     <mat-form-field *ngSwitchCase="'quantity'" appearance="outline">
       <mat-label>{{col}}</mat-label>
       <input [type]="dataSchema[col]" matInput [(ngModel)]="element[col]" [formControl]="quantityControl" required>
-      <mat-error *ngIf="quantityControl.invalid">{{getQuantityErrorMessage()}}</mat-error>
+      
     </mat-form-field>
     <mat-form-field *ngSwitchCase="'name'" appearance="outline">
       <mat-label>{{col}}</mat-label>
@@ -35,3 +45,4 @@
       <mat-error *ngIf="statusControl.invalid">{{getStatusErrorMessage()}}</mat-error>
     </mat-form-field>
   </form>
+-->

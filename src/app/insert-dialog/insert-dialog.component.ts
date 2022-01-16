@@ -13,10 +13,6 @@ export class InsertDialogComponent implements OnInit {
 
   public itemForm: FormGroup;
 
-  public statusList = [
-    "IN", "SOLD", "SHARED",
-  ];
-
   constructor(
     public dialogRef: MatDialogRef<InsertDialogComponent>,
     private _formBuilder: FormBuilder,
