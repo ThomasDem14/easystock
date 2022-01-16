@@ -1,4 +1,9 @@
-<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="table mat-elevation-z8 responsive-table" >
+<div>
+  <span>Search item</span>
+  <span><input [(ngModel)]="filter" (ngModelChange)="filterChanged(filter)"></span>
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort class="table mat-elevation-z8 responsive-table" >
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -25,3 +30,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<button class="insert-button" mat-button (click)="openDialog()">Insert an item</button>
