@@ -1,53 +1,56 @@
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import { Moment } from 'moment';
 import { InsertDialogComponent } from '../insert-dialog/insert-dialog.component';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import * as moment from 'moment';
 
 export interface StockObject {
   name: string;
   quantity: number;
   status: string;
+  date: Moment;
 }
 
 const ELEMENT_SCHEMA: { [key: string]: string } = {
   "name": "text",
   "quantity": "number",
   "status": "text",
+  "date": "text",
   "isEdit": "isEdit"
 };
-
 
 @Component({
   selector: 'app-table',
   templateUrl: 'table.component.html',
   styleUrls: ['table.component.scss']
 })
-export class TableComponent implements AfterViewInit {
+
+export class TableComponent implements AfterViewInit  {
 
   public statusList = [
     "IN", "SOLD", "SHARED",
   ];
 
-  public itemForm: FormGroup;
   data: StockObject[] = [
-    { "name": "Headphone", "quantity": 1, "status": "IN" },
-    { "name": "Table", "quantity": 1, "status": "IN" },
-    { "name": "Chairs", "quantity": 4, "status": "SHARED" },
-    { "name": "Laser", "quantity": 2, "status": "SHARED" },
-    { "name": "Camera", "quantity": 1, "status": "SOLD" },
-    { "name": "PS4", "quantity": 1, "status": "IN" },
-    { "name": "Ping-pong table", "quantity": 1, "status": "IN" },
-    { "name": "DJ platines", "quantity": 1, "status": "SOLD" },
-    { "name": "Fridge", "quantity": 1, "status": "IN" },
-    { "name": "Sofa", "quantity": 1, "status": "SHARED" }
+    {name:'Headphone', quantity:1, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},
+    {name:'Table', quantity:1, status: 'IN', date:moment("09/01/2022", "DD/MM/YYYY")},
+    {name:'Chairs', quantity:4, status: 'SHARED', date:moment("26/12/2021", "DD/MM/YYYY")},
+    {name:'Laser', quantity:2, status: 'SHARED', date:moment("30/12/2021", "DD/MM/YYYY")},
+    {name:'Camera', quantity:1, status: 'SOLD', date:moment("15/01/2022", "DD/MM/YYYY")},
+    {name:'PS4', quantity:1, status: 'IN', date:moment("03/01/2022", "DD/MM/YYYY")},
+    {name:'Ping-pong table', quantity:1, status: 'IN', date:moment("04/01/2022", "DD/MM/YYYY")},
+    {name:'DJ platines', quantity:1, status: 'SOLD', date:moment("16/01/2022", "DD/MM/YYYY")},
+    {name:'Fridge', quantity:1, status: 'IN', date:moment("16/01/2022", "DD/MM/YYYY")},
+    {name:'Sofa', quantity:1, status: 'SHARED', date:moment("06/01/2022", "DD/MM/YYYY")},
   ];
   dataSource = new MatTableDataSource<StockObject>(this.data);
   filter: string;
 
-  displayedColumns: string[] = ['name', 'quantity', 'status', 'isEdit'];
+  displayedColumns: string[] = ['name', 'quantity', 'status', 'date', 'isEdit'];
   dataSchema = ELEMENT_SCHEMA;
 
   constructor(public dialog: MatDialog,

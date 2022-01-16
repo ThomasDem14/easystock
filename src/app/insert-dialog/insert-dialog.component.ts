@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Moment } from 'moment';
 import { TableComponent } from '../table/table.component';
 
 @Component({
@@ -24,6 +25,7 @@ export class InsertDialogComponent implements OnInit {
       titleCtrl: ["", [Validators.required]],
       amountCtrl: ["", [Validators.required, Validators.min(1)]],
       statusCtrl: ["", [Validators.required]],
+      dateCtrl: ["", [Validators.required]],
     });
   }
 
@@ -35,8 +37,9 @@ export class InsertDialogComponent implements OnInit {
     let title: string = this.itemForm.get('titleCtrl')?.value;
     let amount: number = this.itemForm.get('amountCtrl')?.value;
     let status: string = this.itemForm.get('statusCtrl')?.value;
-    
-    this.tableComponent.push({name:title, quantity:amount, status:status});
+    let date: Moment = this.itemForm.get('dateCtrl')?.value;
+
+    this.tableComponent.push({name:title, quantity:amount, status:status, date:date});
 
     this.dialogRef.close();
   }
