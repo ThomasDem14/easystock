@@ -1,6 +1,11 @@
-
 <article>
   <h2>Stock table</h2>
+
+  <div>
+    <span>Search item</span>
+    <span><input [(ngModel)]="filter" (ngModelChange)="filterChanged(filter)"></span>
+  </div>
+
   <table mat-table [dataSource]="dataSource" matSort class="table responsive-table">
     <!-- Loop through columns to display them dynamically -->
     <!-- displayedColumns is a variable declared in the TS file -->
@@ -55,5 +60,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</article>
 
+  <button class="insert-button" mat-button (click)="openDialog()">Insert an item</button>
+</article>
