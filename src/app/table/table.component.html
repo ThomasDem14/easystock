@@ -1,27 +1,47 @@
-<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="table mat-elevation-z8 responsive-table" >
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> <strong>Name</strong> </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+<article>
+  <h2>Stock table</h2>
+  <table mat-table [dataSource]="dataSource" matSort class="table responsive-table">
+    <!-- Loop through columns to display them dynamically -->
+    <!-- displayedColumns is a variable declared in the TS file -->
+    <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>
+        <!-- If the column is not the isEdit column we display the header -->
+        <span *ngIf="col !== 'isEdit'">
+          {{col}}
+        </span>
+      </th>
+      <!-- Loop through the elements of each column -->
+      <td mat-cell *matCellDef="let element">
+        <!-- If isEdit is false we do this -->
+        <div [ngSwitch]="dataSchema[col]" *ngIf="!element.isEdit">
+          <!-- content of isEdit column (toggle the isEdit prop) -->
+          <div class="btn-edit" *ngSwitchCase="'isEdit'" >
+            <button (click)="element.isEdit = !element.isEdit">Edit</button>
+          </div>
+          <!-- content of data column -->
+          <span *ngSwitchDefault>
+            {{element[col]}}
+          </span>
+        </div>
+        <!-- If isEdit is true we do this -->
+        <div *ngIf="element.isEdit">
+          <!-- content of isEdit column (toggle the isEdit prop) -->
+          <div class="btn-edit" *ngIf="col === 'isEdit'; else dataField">
+            <button (click)="element.isEdit = !element.isEdit">Done</button>
+          </div>
+          <!-- If column is editable we replace content by a form with field -->
+          <ng-template #dataField>
+            <mat-form-field>
+              <mat-label>{{col}}</mat-label>
+              <input [type]="dataSchema[col]" matInput [(ngModel)]="element[col]">
+            </mat-form-field>
+          </ng-template>
+        </div>
+      </td>
     </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by quantity"> <strong>Quantity</strong> </th>
-      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by status"> <strong>Status</strong> </th>
-      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-    </ng-container>
-  
-  
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+  </table>
+</article>
+

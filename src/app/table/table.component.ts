@@ -9,7 +9,7 @@ export interface StockObject {
   status: string;
 }
 
-const ELEMENT_DATA: StockObject[] = [
+var data: StockObject[] = [
   {name:'Headphone', quantity:1, status: 'IN'},
   {name:'Table', quantity:1, status: 'IN'},
   {name:'Chairs', quantity:4, status: 'SHARED'},
@@ -22,6 +22,14 @@ const ELEMENT_DATA: StockObject[] = [
   {name:'Sofa', quantity:1, status: 'SHARED'},
 ];
 
+const ELEMENT_SCHEMA: { [key: string]: string } = {
+  "name": "text",
+  "quantity": "number",
+  "status": "text",
+  "isEdit": "isEdit"
+};
+
+
 @Component({
   selector: 'app-table',
   templateUrl: 'table.component.html',
@@ -29,28 +37,16 @@ const ELEMENT_DATA: StockObject[] = [
 })
 export class TableComponent implements AfterViewInit  {
 
-  displayedColumns: string[] = ['name', 'quantity', 'status'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['name', 'quantity', 'status', 'isEdit'];
+  dataSource = new MatTableDataSource(data);
+  dataSchema = ELEMENT_SCHEMA;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) {}
+  constructor() {}
 
   @ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-  }
-
-  /** Announce the change in sort state for assistive technology. */
-  announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
   }
   
 }
