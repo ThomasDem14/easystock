@@ -67,3 +67,10 @@ td.mat-cell {
     background-color: #00bf70;
     color: white;
 }
+
+.edit-button:hover {
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    background-color: #00bf70;
+    color: white;
+    transform: translateY(-5px);
+}

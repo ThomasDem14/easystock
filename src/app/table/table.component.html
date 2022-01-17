@@ -1,9 +1,11 @@
 <article>
   <h2 class="page-header">Stock table</h2>
 
-  <div>
-    <span>Search item</span>
-    <span><input [(ngModel)]="filter" (ngModelChange)="filterChanged(filter)"></span>
+  <div class="control has-icons-left has-icons-right">
+    <input [(ngModel)]="filter" (ngModelChange)="filterChanged(filter)" class="input is-medium" type="text" placeholder="Search item...">
+    <span class="icon is-medium is-left">
+      <i class="fas fa-search"></i>
+    </span>
   </div>
 
   <table mat-table [dataSource]="dataSource" matSort class="table responsive-table">

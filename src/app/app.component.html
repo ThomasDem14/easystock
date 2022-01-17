@@ -1,9 +1,12 @@
 <mat-sidenav-container class="sidenav">
-    <mat-sidenav mode="side" opened>
+    <mat-sidenav mode="side" [opened]="this.isShowing">
         <app-side-menu></app-side-menu>
     </mat-sidenav>
     <mat-sidenav-content>
-        <h1>Home</h1>
+        <button (click)="toggleSideNav()" class="menu-button">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="page-title">Welcome to <b class="name">Easy Stock</b></h1>
         <app-table></app-table>
     </mat-sidenav-content>
 </mat-sidenav-container>
