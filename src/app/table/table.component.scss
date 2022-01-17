@@ -1,10 +1,25 @@
 table.mat-table {
     border-collapse: separate;
-    border-spacing: 0 10px;
-    width: 90%;
+    width: 100%;
     background:white;
     overflow:hidden;
-    margin: 1%;
+    margin-top: 2%;
+}
+
+.mat-table
+{
+    background-color:transparent!important;
+    border: solid 1px #3d9f42;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+
+table tr:last-child td {
+    border-bottom: 0 solid
 }
 
 .table td {
@@ -12,38 +27,42 @@ table.mat-table {
 }
 
 td.mat-cell {
-    padding: 6px;
-}
-
-:host ::ng-deep tr.mat-row {
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid black;
+    padding: 13px;
+    color: #43557b;
+    font-size: large;
+    vertical-align: middle;
+    text-align: center;
 }
 
 :host ::ng-deep thead {
-    background-color: #00bf70;
+    background-color: #3d9f42;
 }
 
 :host ::ng-deep .mat-header-cell { 
-    text-align: center;
     vertical-align: middle;
     color: white;
     text-transform: uppercase;
     font-size: x-large;
+    padding: 20px;
 }
 
-:host ::ng-deep tbody tr {
-    background-color: white;
+.page-header {
+    color: #43557b;
 }
 
-.mat-column-select {
-    overflow: initial;
+:host ::ng-deep .mat-sort-header-container {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    letter-spacing: normal;
+    outline: 0;
+    justify-content: center;
 }
 
 .insert-button {
+    position: relative;
     float: right;
-    margin: -20px 40px 10px 0px;
+    margin: -52px -28px 10px 0px;
 
     background-color: #00bf70;
     color: white;
