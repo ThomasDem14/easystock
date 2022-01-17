@@ -4,7 +4,12 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <button (click)="toggleSideNav()" class="menu-button">
-            <mat-icon>menu</mat-icon>
+            <div *ngIf="this.isShowing">
+                <mat-icon>chevron_left</mat-icon>
+            </div>
+            <div *ngIf="!this.isShowing">
+                <mat-icon>chevron_right</mat-icon>
+            </div>
         </button>
         <h1 class="page-title">Welcome to <b class="name">Easy Stock</b></h1>
         <app-table></app-table>

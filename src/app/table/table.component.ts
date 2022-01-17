@@ -12,7 +12,7 @@ export interface StockObject {
   name: string;
   quantity: number;
   status: string;
-  date: Moment;
+  date: string;
 }
 
 const ELEMENT_SCHEMA: { [key: string]: string } = {
@@ -36,16 +36,16 @@ export class TableComponent implements AfterViewInit  {
   ];
 
   data: StockObject[] = [
-    {name:'Headphone', quantity:1, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},
-    {name:'Table', quantity:1, status: 'IN', date:moment("09/01/2022", "DD/MM/YYYY")},
-    {name:'Chairs', quantity:4, status: 'SHARED', date:moment("26/12/2021", "DD/MM/YYYY")},
-    {name:'Laser', quantity:2, status: 'SHARED', date:moment("30/12/2021", "DD/MM/YYYY")},
-    {name:'Camera', quantity:1, status: 'SOLD', date:moment("15/01/2022", "DD/MM/YYYY")},
-    {name:'PS4', quantity:1, status: 'IN', date:moment("03/01/2022", "DD/MM/YYYY")},
-    {name:'Ping-pong table', quantity:1, status: 'IN', date:moment("04/01/2022", "DD/MM/YYYY")},
-    {name:'DJ platines', quantity:1, status: 'SOLD', date:moment("16/01/2022", "DD/MM/YYYY")},
-    {name:'Fridge', quantity:1, status: 'IN', date:moment("16/01/2022", "DD/MM/YYYY")},
-    {name:'Sofa', quantity:1, status: 'SHARED', date:moment("06/01/2022", "DD/MM/YYYY")},
+    {name:'Headphone', quantity:1, status: 'IN', date:"06/01/2022"},
+    {name:'Table', quantity:1, status: 'IN', date:"09/01/2022"},
+    {name:'Chairs', quantity:4, status: 'SHARED', date:"26/12/2021"},
+    {name:'Laser', quantity:2, status: 'SHARED', date:"30/12/2021"},
+    {name:'Camera', quantity:1, status: 'SOLD', date:"15/01/2022"},
+    {name:'PS4', quantity:1, status: 'IN', date:"03/01/2022"},
+    {name:'Ping-pong table', quantity:1, status: 'IN', date:"04/01/2022"},
+    {name:'DJ platines', quantity:1, status: 'SOLD', date:"16/01/2022"},
+    {name:'Fridge', quantity:1, status: 'IN',date: "16/01/2022"},
+    {name:'Sofa', quantity:1, status: 'SHARED', date:"06/01/2022"},
   ];
   dataSource = new MatTableDataSource<StockObject>(this.data);
   filter: string;
