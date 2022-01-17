@@ -11,6 +11,8 @@ import { MaterialModule } from './material/material.module';
 import { TableComponent } from './table/table.component';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { ShareSellComponent } from './share-sell/share-sell.component';
+import { EditContactDialogComponent } from './edit-contact-dialog/edit-contact-dialog.component';
+import { InsertContactDialogComponent } from './insert-contact-dialog/insert-contact-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ShareSellComponent } from './share-sell/share-sell.component';
     TableComponent,
     EditDialogComponent,
     ShareSellComponent,
+    EditContactDialogComponent,
+    InsertContactDialogComponent,
   ],
   imports: [
     AppRoutingModule,

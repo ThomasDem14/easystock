@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ContactObject } from './share-sell/share-sell.component';
 import { StockObject } from './table/table.component';
+
 
 @Component({
   selector: 'app-root',
@@ -26,7 +28,21 @@ export class AppComponent {
     {name:'Sofa', quantity:1, status: 'SHARED', date:"06/01/2022"},
   ];
 
-  homeColor: string = "#3d9f42";
+  contacts: ContactObject[] = [
+    {firstName:'John', lastName:'Smith', email:'john@email.com', phone:'+33496854047'},
+    {firstName:'Francois', lastName:'Thompson', email:'francois@email.com', phone:'+33496875341'},
+    {firstName:'Tom', lastName:'Dupont', email:'tom@email.com', phone:'+33451258475'},
+    {firstName:'Romain', lastName:'Tartanpiau', email:'romain@email.com', phone:'+33493541873'},
+    {firstName:'Alexandre', lastName:'Legrand', email:'alex@email.com', phone:'+33427865123'},
+    {firstName:'Guillaume', lastName:'Lodrini', email:'guillaume@email.com', phone:'+33487521478'},
+    {firstName:'Thomas', lastName:'Demoulin', email:'thomas@email.com', phone:'+33432789652'},
+    {firstName:'Vincent', lastName:'Labarre', email:'vincent@email.com', phone:'+33496321585'},
+    {firstName:'Carl', lastName:'ito', email:'carl@email.com', phone:'+33496852174'},
+    {firstName:'Alexis', lastName:'Sanchez', email:'alexis@email.com', phone:'+33452141452'},
+  ];
+
+
+  homeColor: string = "#00bf71";
   historyColor: string = "#43557b";
   profileColor: string = "#43557b";
   shareColor: string = "#43557b";
@@ -45,25 +61,25 @@ export class AppComponent {
     this.content = item;
     switch (item) {
       case 'home':
-        this.homeColor = "#3d9f42";
+        this.homeColor = "#00bf71";
         this.historyColor = "#43557b";
         this.profileColor = "#43557b";
         this.shareColor = "#43557b";
         break;
       case 'history':
-        this.historyColor = "#3d9f42";
+        this.historyColor = "#00bf71";
         this.homeColor = "#43557b";
         this.profileColor = "#43557b";
         this.shareColor = "#43557b";
         break;
       case 'share':
-        this.shareColor = "#3d9f42";
+        this.shareColor = "#00bf71";
         this.historyColor = "#43557b";
         this.profileColor = "#43557b";
         this.homeColor = "#43557b";
         break;
       case 'profile':
-        this.profileColor = "#3d9f42";
+        this.profileColor = "#00bf71";
         this.historyColor = "#43557b";
         this.homeColor = "#43557b";
         this.shareColor = "#43557b";

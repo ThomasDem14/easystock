@@ -26,23 +26,3 @@
     <button mat-raised-button (click)="onCancel()">Cancel</button>
     <button mat-raised-button (click)="onInsert()" [disabled]="this.itemForm.invalid">Ok</button>
 </div>
-
-<!--
-<form [formGroup]="this.itemForm">
-    <mat-form-field *ngSwitchCase="'quantity'" appearance="outline">
-      <mat-label>{{col}}</mat-label>
-      <input [type]="dataSchema[col]" matInput [(ngModel)]="element[col]" [formControl]="quantityControl" required>
-      
-    </mat-form-field>
-    <mat-form-field *ngSwitchCase="'name'" appearance="outline">
-      <mat-label>{{col}}</mat-label>
-      <input [type]="dataSchema[col]" matInput [(ngModel)]="element[col]" [formControl]="nameControl" required>
-      <mat-error *ngIf="nameControl.invalid">{{getNameErrorMessage()}}</mat-error>
-    </mat-form-field>
-    <mat-form-field *ngSwitchCase="'status'" appearance="outline">
-      <mat-label>{{col}}</mat-label>
-      <input [type]="dataSchema[col]" matInput [(ngModel)]="element[col]" [formControl]="statusControl" required>
-      <mat-error *ngIf="statusControl.invalid">{{getStatusErrorMessage()}}</mat-error>
-    </mat-form-field>
-  </form>
--->
