@@ -22,7 +22,7 @@
         <div [ngSwitch]="dataSchema[col]">
           <!-- content of isEdit column -->
           <div class="btn-edit" *ngSwitchCase="'isEdit'">
-            <button class="edit-button" mat-button (click)="openEditDialog(element)">Edit</button>
+            <button class="edit-button" mat-raised-button (click)="openEditDialog(element)">Edit</button>
           </div>
           <!-- content of data column -->
           <span *ngSwitchDefault>
@@ -35,5 +35,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <button class="insert-button" mat-button (click)="openDialog()">Insert an item</button>
+  <button class="insert-button" mat-fab (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
 </article>
