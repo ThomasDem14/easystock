@@ -27,7 +27,8 @@
           </div>
           <!-- content of data column -->
           <span *ngSwitchDefault>
-            {{element[col]}}
+            <span class="element-label">{{col}}</span>
+            <span class="element-value">{{element[col]}}</span>
           </span>
         </div>
       </td>

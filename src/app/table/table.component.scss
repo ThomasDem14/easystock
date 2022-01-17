@@ -8,8 +8,8 @@ table.mat-table {
 
 .mat-table
 {
-    background-color:transparent!important;
-    border: solid 1px #3d9f42;
+      background-color:transparent!important;
+      border: solid 1px #3d9f42;
 }
 
 table {
@@ -19,7 +19,7 @@ table {
 }
 
 table tr:last-child td {
-    border-bottom: 0 solid
+    border-bottom: 0 solid;
 }
 
 .table td {
@@ -59,12 +59,54 @@ td.mat-cell {
     justify-content: center;
 }
 
+.element-label {
+    display: none;
+}
+
+
+@media(max-width: 1000px) {
+    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+        padding-left: 13px;
+    }
+
+    .element-label {
+        width: 90px;
+        display: inline-block;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .element-value {
+        padding-left: 25px;
+    }
+
+    .mat-header-row {
+        display: none;
+    }
+
+    .mat-row {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        justify-content: stretch;
+        justify-items: start;
+        display: grid;
+        &:not(:last-of-type) td:last-of-type {
+            border-bottom: 0.15rem solid #43557b;
+            width: 100%;
+        }
+    }
+}
+
+.page-header {
+    color: #43557b;
+}
+
 .insert-button {
     position: relative;
     float: right;
     margin: -52px -28px 10px 0px;
-
-    background-color: #00bf70;
+    background-color: #3d9f42;
     color: white;
 }
 
