@@ -91,7 +91,7 @@ td.mat-cell {
         justify-content: stretch;
         justify-items: start;
         display: grid;
-        &:not(:last-of-type) td:last-of-type {
+        td:last-of-type {
             border-bottom: 0.15rem solid #43557b;
             width: 100%;
         }
