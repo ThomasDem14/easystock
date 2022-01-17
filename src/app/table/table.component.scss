@@ -1,5 +1,44 @@
-table { 
+
+
+table.mat-table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
     width: 90%;
+    background:white;
+    overflow:hidden;
+    margin: 1%;
+}
+
+
+.table td {
+    border: none;
+}
+
+td.mat-cell {
+    padding: 20px;
+}
+
+:host ::ng-deep tr.mat-row {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+:host ::ng-deep thead {
+    background-color: #00bf70;
+}
+
+:host ::ng-deep .mat-header-cell { 
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    text-transform: uppercase;
+    font-size: x-large;
+}
+
+:host ::ng-deep tbody tr {
+    background-color: white;
+    shadow: none;
 }
 
 .mat-column-select {

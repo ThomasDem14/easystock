@@ -10,18 +10,19 @@
     <!-- Loop through columns to display them dynamically -->
     <!-- displayedColumns is a variable declared in the TS file -->
     <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
-      <th mat-header-cell *matHeaderCellDef  mat-sort-header>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
         <!-- If the column is not the isEdit column we display the header -->
-        <span *ngIf="col !== 'isEdit'">
+        <span *ngIf="col !== 'isEdit'" class="header-title">
           {{col}}
         </span>
       </th>
       <!-- Loop through the elements of each column -->
+
       <td mat-cell *matCellDef="let element">
         <div [ngSwitch]="dataSchema[col]">
           <!-- content of isEdit column -->
-          <div class="btn-edit" *ngSwitchCase="'isEdit'" >
-            <button  class="edit-button" mat-button (click)="openEditDialog(element)">Edit</button>
+          <div class="btn-edit" *ngSwitchCase="'isEdit'">
+            <button class="edit-button" mat-button (click)="openEditDialog(element)">Edit</button>
           </div>
           <!-- content of data column -->
           <span *ngSwitchDefault>
