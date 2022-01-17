@@ -1,8 +1,8 @@
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Moment } from 'moment';
 import { InsertDialogComponent } from '../insert-dialog/insert-dialog.component';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
@@ -28,25 +28,16 @@ const ELEMENT_SCHEMA: { [key: string]: string } = {
   styleUrls: ['table.component.scss']
 })
 
-export class TableComponent implements AfterViewInit  {
+export class TableComponent implements OnInit {
 
   public statusList = [
     "IN", "SOLD", "SHARED",
   ];
 
-  data: StockObject[] = [
-    {name:'Headphone', quantity:1, status: 'IN', date:"06/01/2022"},
-    {name:'Table', quantity:1, status: 'IN', date:"09/01/2022"},
-    {name:'Chairs', quantity:4, status: 'SHARED', date:"26/12/2021"},
-    {name:'Laser', quantity:2, status: 'SHARED', date:"30/12/2021"},
-    {name:'Camera', quantity:1, status: 'SOLD', date:"15/01/2022"},
-    {name:'PS4', quantity:1, status: 'IN', date:"03/01/2022"},
-    {name:'Ping-pong table', quantity:1, status: 'IN', date:"04/01/2022"},
-    {name:'DJ platines', quantity:1, status: 'SOLD', date:"16/01/2022"},
-    {name:'Fridge', quantity:1, status: 'IN',date: "16/01/2022"},
-    {name:'Sofa', quantity:1, status: 'SHARED', date:"06/01/2022"},
-  ];
-  dataSource = new MatTableDataSource<StockObject>(this.data);
+  @Input() data: any[];
+
+  dataSource: MatTableDataSource<StockObject>;
+
   filter: string;
 
   displayedColumns: string[] = ['name', 'quantity', 'status', 'date', 'isEdit'];
@@ -54,6 +45,10 @@ export class TableComponent implements AfterViewInit  {
 
   constructor(public dialog: MatDialog,
     public editDialog: MatDialog) { }
+
+  ngOnInit(): void {
+    this.dataSource = new MatTableDataSource<StockObject>(this.data);
+  }
 
   @ViewChild(MatSort) sort: MatSort;
 

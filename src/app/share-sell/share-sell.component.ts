@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-share-sell',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShareSellComponent implements OnInit {
 
-  constructor() { }
+  @Input() data: any[];
+
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }
