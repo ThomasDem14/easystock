@@ -5,6 +5,7 @@
 section {
     float: left;
     width: 50%;
+    padding-right: 3%;
 }
 
 aside {
@@ -15,15 +16,14 @@ aside {
 table.mat-table {
     border-collapse: separate;
     width: 100%;
-    background:white;
-    overflow:hidden;
+    background: white;
+    overflow: hidden;
     margin-top: 2%;
 }
 
-.mat-table
-{
-      background-color:transparent!important;
-      border: solid 1px #00bf71;
+.mat-table {
+    background-color: transparent !important;
+    border: solid 1px #00bf71;
 }
 
 table {
@@ -52,7 +52,7 @@ td.mat-cell {
     background-color: #00bf71;
 }
 
-:host ::ng-deep .mat-header-cell { 
+:host ::ng-deep .mat-header-cell {
     vertical-align: middle;
     color: white;
     text-transform: uppercase;
@@ -79,7 +79,10 @@ td.mat-cell {
 
 
 @media(max-width: 1000px) {
-    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+
+    th.mat-header-cell:first-of-type,
+    td.mat-cell:first-of-type,
+    td.mat-footer-cell:first-of-type {
         padding-left: 13px;
     }
 
@@ -105,9 +108,25 @@ td.mat-cell {
         justify-content: stretch;
         justify-items: start;
         display: grid;
+
         td:last-of-type {
             border-bottom: 0.15rem solid #43557b;
             width: 100%;
         }
     }
+}
+
+.edit-button:hover {
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    background-color: #00bf71;
+    color: white;
+    transform: translateY(-5px);
+}
+
+.insert-button {
+    position: relative;
+    float: right;
+    margin: -52px -28px 10px 0px;
+    background-color: #00bf71;
+    color: white;
 }

@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
+import { ContactObject } from './share-sell/share-sell.component';
 import { StockObject } from './table/table.component';
 
-export interface ContactObject {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-}
 
 @Component({
   selector: 'app-root',
@@ -47,7 +42,7 @@ export class AppComponent {
   ];
 
 
-  homeColor: string = "#3d9f42";
+  homeColor: string = "#00bf71";
   historyColor: string = "#43557b";
   profileColor: string = "#43557b";
   shareColor: string = "#43557b";
@@ -66,25 +61,25 @@ export class AppComponent {
     this.content = item;
     switch (item) {
       case 'home':
-        this.homeColor = "#3d9f42";
+        this.homeColor = "#00bf71";
         this.historyColor = "#43557b";
         this.profileColor = "#43557b";
         this.shareColor = "#43557b";
         break;
       case 'history':
-        this.historyColor = "#3d9f42";
+        this.historyColor = "#00bf71";
         this.homeColor = "#43557b";
         this.profileColor = "#43557b";
         this.shareColor = "#43557b";
         break;
       case 'share':
-        this.shareColor = "#3d9f42";
+        this.shareColor = "#00bf71";
         this.historyColor = "#43557b";
         this.profileColor = "#43557b";
         this.homeColor = "#43557b";
         break;
       case 'profile':
-        this.profileColor = "#3d9f42";
+        this.profileColor = "#00bf71";
         this.historyColor = "#43557b";
         this.homeColor = "#43557b";
         this.shareColor = "#43557b";

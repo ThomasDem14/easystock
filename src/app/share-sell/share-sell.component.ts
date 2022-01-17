@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EditContactDialogComponent } from '../edit-contact-dialog/edit-contact-dialog.component';
 import { DataObject } from '../edit-dialog/edit-dialog.component';
+import { InsertContactDialogComponent } from '../insert-contact-dialog/insert-contact-dialog.component';
 import { StockObject } from '../table/table.component';
 
 const ELEMENT_SCHEMA: { [key: string]: string } = {
@@ -67,8 +68,13 @@ export class ShareSellComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  /*openDialog(): void {
-    const dialogRef = this.dialog.open(InsertDialogComponent, {
+  push(object: ContactObject) {
+    this.contacts.push(object);
+    this.resetDataSource(this.contacts);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(InsertContactDialogComponent, {
       width: 'auto',
       data: this,
     });
@@ -76,7 +82,7 @@ export class ShareSellComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
     });
-  }*/
+  }
 
   openEditDialog(element: ContactObject): void {
     const dialogRef = this.editDialog.open(EditContactDialogComponent, {

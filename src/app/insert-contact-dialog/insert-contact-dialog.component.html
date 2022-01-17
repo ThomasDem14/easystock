@@ -1,1 +1,30 @@
-<p>insert-contact-dialog works!</p>
+<h1 mat-dialog-title>Insert a contact</h1>
+<div mat-dialog-content>
+    <form [formGroup]="this.itemForm">
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput required formControlName="firstNameControl">
+            <mat-error *ngIf="this.itemForm.get('firstNameControl')?.invalid">{{getFirstNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput required formControlName="lastNameControl">
+            <mat-error *ngIf="this.itemForm.get('lastNameControl')?.invalid">{{getLastNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput required formControlName="emailControl">
+            <mat-error *ngIf="this.itemForm.get('emailControl')?.invalid">{{getEmailErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="text" matInput required formControlName="phoneControl">
+            <mat-error *ngIf="this.itemForm.get('phoneControl')?.invalid">{{getPhoneErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button (click)="onInsert()"
+    [disabled]="this.itemForm.invalid">Ok</button>
+</div>

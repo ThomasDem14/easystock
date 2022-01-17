@@ -1,4 +1,4 @@
-<section>
+<section class="contactTable">
     <h2 class="page-header">Share or Sell an item</h2>
     <div class="control has-icons-left has-icons-right">
         <input [(ngModel)]="filter" (ngModelChange)="filterChanged(filter)" class="input is-medium" type="text" placeholder="Search item...">
@@ -46,9 +46,9 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row"></tr>
       </table>
     
-      <!--<button class="insert-button" mat-fab (click)="openDialog()">
+      <button class="insert-button" mat-fab (click)="openDialog()">
         <mat-icon>add</mat-icon>
-      </button>-->
+      </button>
 </section>
 <aside>
     <p>Partie de demou</p>
