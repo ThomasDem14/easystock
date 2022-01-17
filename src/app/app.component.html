@@ -9,7 +9,7 @@
             </p>
             <ul class="menu-list">
                 <li>
-                    <a>
+                    <a (click)="onMenuItemClick('home')">
                         <span class="icon-text">
                             <span class="icon sub-title">
                                 <i class="fas fa-home"></i>
@@ -19,17 +19,17 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a (click)="onMenuItemClick('history')">
                         <span class="icon-text">
                             <span class="icon sub-title">
                                 <i class="fas fa-history"></i>
                             </span>
-                            <span class="sub-title">History</span>
+                            <span class="sub-title" >History</span>
                         </span>
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a (click)="onMenuItemClick('share')">
                         <span class="icon-text">
                             <span class="icon sub-title">
                                 <i class="far fa-handshake"></i>
@@ -44,7 +44,7 @@
             </p>
             <ul class="menu-list">
                 <li>
-                    <a>
+                    <a (click)="onMenuItemClick('profile')">
                         <span class="icon-text">
                             <span class="icon sub-title">
                                 <i class="fas fa-user-alt"></i>
@@ -66,7 +66,14 @@
             </div>
         </button>
         <h1 class="page-title">Welcome to <b class="name">Easy Stock</b></h1>
-        <app-table></app-table>
+        <div [ngSwitch]="this.content">
+            <div *ngSwitchCase="'home'">
+                <app-table></app-table>
+            </div>
+            <div *ngSwitchCase="'history'">history</div>
+            <div *ngSwitchCase="'share'"><app-share-sell></app-share-sell></div>
+            <div *ngSwitchCase="'profile'">profile</div>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
   

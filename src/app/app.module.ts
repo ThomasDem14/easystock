@@ -10,6 +10,7 @@ import { InsertDialogComponent } from './insert-dialog/insert-dialog.component';
 import { MaterialModule } from './material/material.module';
 import { TableComponent } from './table/table.component';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { ShareSellComponent } from './share-sell/share-sell.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
     InsertDialogComponent,
     TableComponent,
     EditDialogComponent,
+    ShareSellComponent,
   ],
   imports: [
     AppRoutingModule,
