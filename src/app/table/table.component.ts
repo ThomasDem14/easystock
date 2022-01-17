@@ -3,7 +3,6 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Moment } from 'moment';
 import { InsertDialogComponent } from '../insert-dialog/insert-dialog.component';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 

@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav">
     <mat-sidenav mode="side" [opened]="this.isShowing">
         <figure class="image is-2by1">
-            <img src="assets/images/logo.PNG">
+            <img src="assets/images/logo2.PNG">
         </figure>
         <aside class="menu">
             <p class="menu-label">
@@ -71,7 +71,7 @@
                 <app-table [data]="data"></app-table>
             </div>
             <div *ngSwitchCase="'history'">history</div>
-            <div *ngSwitchCase="'share'"><app-share-sell [data]="data"></app-share-sell></div>
+            <div *ngSwitchCase="'share'"><app-share-sell [data]="data" [contacts]="contacts"></app-share-sell></div>
             <div *ngSwitchCase="'profile'">profile</div>
         </div>
     </mat-sidenav-content>

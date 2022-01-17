@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import { StockObject } from './table/table.component';
 
+export interface ContactObject {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -25,6 +32,20 @@ export class AppComponent {
     {name:'Fridge', quantity:1, status: 'IN',date: "16/01/2022"},
     {name:'Sofa', quantity:1, status: 'SHARED', date:"06/01/2022"},
   ];
+
+  contacts: ContactObject[] = [
+    {firstName:'John', lastName:'Smith', email:'john@email.com', phone:'+33496854047'},
+    {firstName:'Francois', lastName:'Thompson', email:'francois@email.com', phone:'+33496875341'},
+    {firstName:'Tom', lastName:'Dupont', email:'tom@email.com', phone:'+33451258475'},
+    {firstName:'Romain', lastName:'Tartanpiau', email:'romain@email.com', phone:'+33493541873'},
+    {firstName:'Alexandre', lastName:'Legrand', email:'alex@email.com', phone:'+33427865123'},
+    {firstName:'Guillaume', lastName:'Lodrini', email:'guillaume@email.com', phone:'+33487521478'},
+    {firstName:'Thomas', lastName:'Demoulin', email:'thomas@email.com', phone:'+33432789652'},
+    {firstName:'Vincent', lastName:'Labarre', email:'vincent@email.com', phone:'+33496321585'},
+    {firstName:'Carl', lastName:'ito', email:'carl@email.com', phone:'+33496852174'},
+    {firstName:'Alexis', lastName:'Sanchez', email:'alexis@email.com', phone:'+33452141452'},
+  ];
+
 
   homeColor: string = "#3d9f42";
   historyColor: string = "#43557b";

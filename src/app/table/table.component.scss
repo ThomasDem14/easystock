@@ -9,7 +9,7 @@ table.mat-table {
 .mat-table
 {
       background-color:transparent!important;
-      border: solid 1px #3d9f42;
+      border: solid 1px #00bf71;
 }
 
 table {
@@ -35,7 +35,7 @@ td.mat-cell {
 }
 
 :host ::ng-deep thead {
-    background-color: #3d9f42;
+    background-color: #00bf71;
 }
 
 :host ::ng-deep .mat-header-cell { 
@@ -106,13 +106,13 @@ td.mat-cell {
     position: relative;
     float: right;
     margin: -52px -28px 10px 0px;
-    background-color: #3d9f42;
+    background-color: #00bf71;
     color: white;
 }
 
 .edit-button:hover {
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    background-color: #00bf70;
+    background-color: #00bf71;
     color: white;
     transform: translateY(-5px);
 }
