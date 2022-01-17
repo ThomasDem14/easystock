@@ -6,7 +6,7 @@
 
 mat-sidenav-content {
     background: white;
-    padding: 3%;
+    padding: 40px 3% 3% 3%;
 }
 
 mat-sidenav {
@@ -27,4 +27,16 @@ mat-sidenav {
 
 .page-name {
     color: #b0b8c8;
+}
+
+.menu-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f0faf7;
+    border-top: none;
+    border-right: solid 1px rgba(0, 0, 0, 0.12);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.12);
+    border-left: none;
+    color: black;
 }

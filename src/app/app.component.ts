@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'easystock';
+  isShowing: boolean = true;
 
   constructor() {}
+
+  toggleSideNav() {
+    this.isShowing = !this.isShowing;
+  }
 }
