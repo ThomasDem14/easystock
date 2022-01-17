@@ -6,7 +6,6 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Moment } from 'moment';
 import { InsertDialogComponent } from '../insert-dialog/insert-dialog.component';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
-import * as moment from 'moment';
 
 export interface StockObject {
   name: string;

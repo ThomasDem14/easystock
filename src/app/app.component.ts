@@ -9,9 +9,14 @@ export class AppComponent {
   title = 'easystock';
   isShowing: boolean = true;
 
+  content: string = 'home';
   constructor() {}
 
   toggleSideNav() {
     this.isShowing = !this.isShowing;
+  }
+
+  onMenuItemClick(item: string) {
+    this.content = item;
   }
 }
