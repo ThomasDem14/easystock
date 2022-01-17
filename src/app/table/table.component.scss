@@ -2,13 +2,27 @@
 
 table.mat-table {
     border-collapse: separate;
-    border-spacing: 0 10px;
-    width: 90%;
+    width: 100%;
     background:white;
     overflow:hidden;
-    margin: 1%;
+    margin-top: 2%;
 }
 
+.mat-table
+{
+      background-color:transparent!important;  
+      border: solid 1px #3d9f42;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+  
+table tr:last-child td /*To remove the last border*/{
+    border-bottom: 0 solid
+}
 
 .table td {
     border: none;
@@ -16,33 +30,35 @@ table.mat-table {
 
 td.mat-cell {
     padding: 20px;
-}
-
-:host ::ng-deep tr.mat-row {
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid black;
+    color: #43557b;
+    font-size: large;
+    vertical-align: middle;
+    text-align: center;
 }
 
 :host ::ng-deep thead {
-    background-color: #00bf70;
+    background-color: #3d9f42;
 }
 
 :host ::ng-deep .mat-header-cell { 
-    text-align: center;
     vertical-align: middle;
     color: white;
     text-transform: uppercase;
     font-size: x-large;
+    padding: 20px;
 }
 
-:host ::ng-deep tbody tr {
-    background-color: white;
-    shadow: none;
+.page-header {
+    color: #43557b;
 }
 
-.mat-column-select {
-    overflow: initial;
+:host ::ng-deep .mat-sort-header-container {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    letter-spacing: normal;
+    outline: 0;
+    justify-content: center;
 }
 
 .insert-button {
