@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-share-sell',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShareSellComponent implements OnInit {
 
-  constructor() { }
+  public itemForm: FormGroup;
+
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.itemForm = this._formBuilder.group({
+      titleCtrl: ["", [Validators.required]],
+      amountCtrl: ["", [Validators.required, Validators.min(1)]],
+      statusCtrl: ["", [Validators.required]],
+      dateCtrl: ["", [Validators.required]],
+    });
   }
-
 }
