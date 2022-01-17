@@ -8,7 +8,7 @@
     </span>
   </div>
 
-  <table mat-table [dataSource]="dataSource" matSort class="table responsive-table">
+  <table mat-table [dataSource]="dataSource" matSort class="table">
     <!-- Loop through columns to display them dynamically -->
     <!-- displayedColumns is a variable declared in the TS file -->
     <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">

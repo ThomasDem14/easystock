@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-share-sell',
@@ -9,8 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ShareSellComponent implements OnInit {
 
   public itemForm: FormGroup;
+  @Input() data: any[];
 
   constructor(private _formBuilder: FormBuilder) { }
+  
 
   ngOnInit(): void {
     this.itemForm = this._formBuilder.group({

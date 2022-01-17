@@ -10,31 +10,31 @@
             <ul class="menu-list">
                 <li>
                     <a (click)="onMenuItemClick('home')">
-                        <span class="icon-text">
-                            <span class="icon sub-title">
+                        <span class="icon-text" [style.color]="this.homeColor">
+                            <span class="icon">
                                 <i class="fas fa-home"></i>
                             </span>
-                            <span class="sub-title">Home</span>
+                            <span>Home</span>
                         </span>
                     </a>
                 </li>
                 <li>
                     <a (click)="onMenuItemClick('history')">
-                        <span class="icon-text">
-                            <span class="icon sub-title">
+                        <span class="icon-text" [style.color]="this.historyColor">
+                            <span class="icon">
                                 <i class="fas fa-history"></i>
                             </span>
-                            <span class="sub-title" >History</span>
+                            <span>History</span>
                         </span>
                     </a>
                 </li>
                 <li>
                     <a (click)="onMenuItemClick('share')">
-                        <span class="icon-text">
-                            <span class="icon sub-title">
+                        <span class="icon-text" [style.color]="this.shareColor">
+                            <span class="icon">
                                 <i class="far fa-handshake"></i>
                             </span>
-                            <span class="sub-title">Share / Sell</span>
+                            <span>Share / Sell</span>
                         </span>
                     </a>
                 </li>
@@ -45,11 +45,11 @@
             <ul class="menu-list">
                 <li>
                     <a (click)="onMenuItemClick('profile')">
-                        <span class="icon-text">
-                            <span class="icon sub-title">
+                        <span class="icon-text" [style.color]="this.profileColor">
+                            <span class="icon">
                                 <i class="fas fa-user-alt"></i>
                             </span>
-                            <span class="sub-title">Profile</span>
+                            <span>Profile</span>
                         </span>
                     </a>
                 </li>
@@ -68,10 +68,10 @@
         <h1 class="page-title">Welcome to <b class="name">Easy Stock</b></h1>
         <div [ngSwitch]="this.content">
             <div *ngSwitchCase="'home'">
-                <app-table></app-table>
+                <app-table [data]="data"></app-table>
             </div>
             <div *ngSwitchCase="'history'">history</div>
-            <div *ngSwitchCase="'share'"><app-share-sell></app-share-sell></div>
+            <div *ngSwitchCase="'share'"><app-share-sell [data]="data"></app-share-sell></div>
             <div *ngSwitchCase="'profile'">profile</div>
         </div>
     </mat-sidenav-content>
