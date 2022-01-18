@@ -1,54 +1,55 @@
 <section class="contactTable">
-    <h2 class="page-header">Share or Sell an item</h2>
-    <div class="control has-icons-left has-icons-right">
-        <input [(ngModel)]="filter" (ngModelChange)="filterChanged(filter)" class="input is-medium" type="text" placeholder="Search item...">
-        <span class="icon is-medium is-left">
-          <i class="fas fa-search"></i>
-        </span>
-      </div>
-    
-      <table mat-table [dataSource]="dataSource" matSort class="table">
-        <!-- Loop through columns to display them dynamically -->
-        <!-- displayedColumns is a variable declared in the TS file -->
-        <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            <!-- If the column is not the isEdit column we display the header -->
-            <span *ngIf="col !== 'isEdit'" class="header-title">
-                <div [ngSwitch]="col">
-                    <div *ngSwitchCase="'firstName'">
-                        first name
-                    </div>
-                    <div *ngSwitchCase="'lastName'">
-                        last name
-                    </div>
-                    <div *ngSwitchDefault>
-                        {{col}}
-                    </div>
-                </div>
-            </span>
-          </th>
-          <!-- Loop through the elements of each column -->
-          <td mat-cell *matCellDef="let element">
-            <div [ngSwitch]="dataSchema[col]">
-              <!-- content of isEdit column -->
-              <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                <button class="edit-button" mat-raised-button (click)="openEditDialog(element)">Edit</button>
-              </div>
-              <!-- content of data column -->
-              <span *ngSwitchDefault>
-                <span class="element-label">{{col}}</span>
-                <span class="element-value">{{element[col]}}</span>
-              </span>
+  <h2 class="page-header">Share or Sell an item</h2>
+  <div class="control has-icons-left has-icons-right">
+    <input [(ngModel)]="filter" (ngModelChange)="filterChanged(filter)" class="input is-medium" type="text"
+      placeholder="Search item...">
+    <span class="icon is-medium is-left">
+      <i class="fas fa-search"></i>
+    </span>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" matSort class="table">
+    <!-- Loop through columns to display them dynamically -->
+    <!-- displayedColumns is a variable declared in the TS file -->
+    <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        <!-- If the column is not the isEdit column we display the header -->
+        <span *ngIf="col !== 'isEdit'" class="header-title">
+          <div [ngSwitch]="col">
+            <div *ngSwitchCase="'firstName'">
+              first name
             </div>
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row"></tr>
-      </table>
-    
-      <button class="insert-button" mat-fab (click)="openDialog()">
-        <mat-icon>add</mat-icon>
-      </button>
+            <div *ngSwitchCase="'lastName'">
+              last name
+            </div>
+            <div *ngSwitchDefault>
+              {{col}}
+            </div>
+          </div>
+        </span>
+      </th>
+      <!-- Loop through the elements of each column -->
+      <td mat-cell *matCellDef="let element">
+        <div [ngSwitch]="dataSchema[col]">
+          <!-- content of isEdit column -->
+          <div class="btn-edit" *ngSwitchCase="'isEdit'">
+            <button class="edit-button" mat-raised-button (click)="openEditDialog(element)">Edit</button>
+          </div>
+          <!-- content of data column -->
+          <span *ngSwitchDefault>
+            <span class="element-label">{{col}}</span>
+            <span class="element-value">{{element[col]}}</span>
+          </span>
+        </div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row"></tr>
+  </table>
+
+  <button class="insert-button" mat-fab (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
 </section>
 <aside>
   <h2>Share or sell an item</h2>
@@ -57,11 +58,14 @@
       <h4>Which item do you want to use?</h4>
       <mat-form-field appearance="outline">
         <mat-label>Select the item</mat-label>
-        <mat-select required formControlName="titleCtrl">
-            <mat-option *ngFor="let item of this.data" [value]="item">
-              {{item.name + " (" + item.quantity + ")"}}
-            </mat-option>
-          </mat-select>
+        <input type="text" placeholder="Pick one" aria-label="Item" matInput [formControl]="$any(this.itemForm).get('titleCtrl')"
+          [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let item of this.filteredOptions | async" [value]="item.name + ' (' + item.quantity + ')'">
+            {{item.name + " (" + item.quantity + ")"}}
+          </mat-option>
+        </mat-autocomplete>
+
       </mat-form-field>
     </div>
 
@@ -76,7 +80,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-    
+
     <div *ngIf="this.step > 1">
       <h4>In what amount?</h4>
       <mat-form-field appearance="outline">
@@ -84,7 +88,7 @@
         <input matInput type="number" min=1 max={{this.max}} required formControlName="amountCtrl">
       </mat-form-field>
     </div>
-    
+
     <div *ngIf="this.step > 2">
       <h4>Select the date of the transaction</h4>
       <mat-form-field appearance="outline">
@@ -96,9 +100,8 @@
     </div>
 
     <div mat-dialog-actions>
-        <button mat-raised-button (click)="onReset()">Reset</button>
-        <button mat-raised-button (click)="onSubmit()"
-          [disabled]="this.itemForm.invalid">Ok</button>
-      </div>
+      <button mat-raised-button (click)="onReset()">Reset</button>
+      <button mat-raised-button (click)="onSubmit()" [disabled]="this.itemForm.invalid">Ok</button>
+    </div>
   </form>
 </aside>
