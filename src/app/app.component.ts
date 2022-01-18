@@ -19,13 +19,19 @@ export class AppComponent {
     {name:'Headphone', quantity:1, status: 'IN', date:"06/01/2022"},
     {name:'Table', quantity:1, status: 'IN', date:"09/01/2022"},
     {name:'Chairs', quantity:4, status: 'SHARED', date:"26/12/2021"},
-    {name:'Laser', quantity:2, status: 'SHARED', date:"30/12/2021"},
-    {name:'Camera', quantity:1, status: 'SOLD', date:"15/01/2022"},
-    {name:'PS4', quantity:1, status: 'IN', date:"03/01/2022"},
-    {name:'Ping-pong table', quantity:1, status: 'IN', date:"04/01/2022"},
-    {name:'DJ platines', quantity:1, status: 'SOLD', date:"16/01/2022"},
-    {name:'Fridge', quantity:1, status: 'IN',date: "16/01/2022"},
-    {name:'Sofa', quantity:1, status: 'SHARED', date:"06/01/2022"},
+    {name:'Phone', quantity:2, status: 'IN', date:"30/12/2021"},
+  ];
+
+  history: StockObject[] = [
+    {name:'Headphone', quantity:1, status: 'IN', date:"06/01/2022"},
+    {name:'Table', quantity:1, status: 'IN', date:"09/01/2022"},
+    {name:'Chairs', quantity:4, status: 'IN', date:"23/12/2021"},
+    {name:'Chairs', quantity:4, status: 'SHARED', date:"26/12/2021"},
+    {name:'Phone', quantity:2, status: 'IN', date:"12/12/2021"},
+    {name:'Phone', quantity:2, status: 'SHARED', date:"13/12/2021"},
+    {name:'Phone', quantity:2, status: 'BACKIN', date:"30/12/2021"},
+    {name:'Computer', quantity:1, status: 'IN', date:"16/01/2022"},
+    {name:'Computer', quantity:1, status: 'SOLD', date:"18/01/2022"},
   ];
 
   contacts: ContactObject[] = [
@@ -40,7 +46,6 @@ export class AppComponent {
     {firstName:'Carl', lastName:'ito', email:'carl@email.com', phone:'+33496852174'},
     {firstName:'Alexis', lastName:'Sanchez', email:'alexis@email.com', phone:'+33452141452'},
   ];
-
 
   homeColor: string = "#00bf71";
   historyColor: string = "#43557b";

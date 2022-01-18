@@ -40,6 +40,7 @@ export class ShareSellComponent implements OnInit {
   public itemForm: FormGroup;
   @Input() data: StockObject[];
   @Input() contacts: ContactObject[];
+  @Input() history: any[];
   @ViewChild(MatSort) sort: MatSort;
 
   step: number = 0;
@@ -88,7 +89,7 @@ export class ShareSellComponent implements OnInit {
     let status: string = this.itemForm.get('statusCtrl')?.value;
     let date: Moment = this.itemForm.get('dateCtrl')?.value;
     
-    this.data.push({name:title.name, quantity:amount, status:status, date:date.format("DD/MM/YYYY")});
+    this.history.push({name:title.name, quantity:amount, status:status, date:date.format("DD/MM/YYYY")});
     this.onReset();
   }
   

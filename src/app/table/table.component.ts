@@ -33,6 +33,7 @@ export class TableComponent implements OnInit {
   ];
 
   @Input() data: any[];
+  @Input() history: any[];
 
   dataSource: MatTableDataSource<StockObject>;
 
@@ -56,6 +57,7 @@ export class TableComponent implements OnInit {
 
   push(object: StockObject) {
     this.data.push(object);
+    this.history.push(object);
     this.resetDataSource(this.data);
   }
 

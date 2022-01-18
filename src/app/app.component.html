@@ -68,10 +68,14 @@
         <h1 class="page-title">Welcome to <b class="name">Easy Stock</b></h1>
         <div [ngSwitch]="this.content">
             <div *ngSwitchCase="'home'">
-                <app-table [data]="data"></app-table>
+                <app-table [data]="data" [history]="history"></app-table>
             </div>
-            <div *ngSwitchCase="'history'">history</div>
-            <div *ngSwitchCase="'share'"><app-share-sell [data]="data" [contacts]="contacts"></app-share-sell></div>
+            <div *ngSwitchCase="'history'">
+                <app-table-history [history]="history"></app-table-history>
+            </div>
+            <div *ngSwitchCase="'share'">
+                <app-share-sell [data]="data" [contacts]="contacts" [history]="history"></app-share-sell>
+            </div>
             <div *ngSwitchCase="'profile'">profile</div>
         </div>
     </mat-sidenav-content>

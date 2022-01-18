@@ -1,0 +1,30 @@
+<article>
+    <h2 class="page-header">History table</h2>
+
+    <div class="control has-icons-left has-icons-right">
+        <input [(ngModel)]="filter" (ngModelChange)="filterChanged(filter)" class="input is-medium" type="text" placeholder="Search item...">
+        <span class="icon is-medium is-left">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+
+      <table mat-table [dataSource]="dataSource" matSort class="table">
+        <!-- Loop through columns to display them dynamically -->
+        <!-- displayedColumns is a variable declared in the TS file -->
+        <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <!-- If the column is not the isEdit column we display the header -->
+            <span *ngIf="col !== 'isEdit'" class="header-title">
+              {{col}}
+            </span>
+          </th>
+          <!-- Loop through the elements of each column -->
+          <td mat-cell *matCellDef="let element">
+            <span class="element-label">{{col}}</span>
+            <span class="element-value">{{element[col]}}</span>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row"></tr>
+      </table>
+</article>

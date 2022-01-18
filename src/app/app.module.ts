@@ -13,6 +13,7 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { ShareSellComponent } from './share-sell/share-sell.component';
 import { EditContactDialogComponent } from './edit-contact-dialog/edit-contact-dialog.component';
 import { InsertContactDialogComponent } from './insert-contact-dialog/insert-contact-dialog.component';
+import { TableHistoryComponent } from './table-history/table-history.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { InsertContactDialogComponent } from './insert-contact-dialog/insert-con
     ShareSellComponent,
     EditContactDialogComponent,
     InsertContactDialogComponent,
+    TableHistoryComponent,
   ],
   imports: [
     AppRoutingModule,
