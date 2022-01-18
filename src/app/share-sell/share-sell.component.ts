@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StockObject } from '../table/table.component';
 import { Moment } from 'moment';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
@@ -7,6 +7,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EditContactDialogComponent } from '../edit-contact-dialog/edit-contact-dialog.component';
 import { InsertContactDialogComponent } from '../insert-contact-dialog/insert-contact-dialog.component';
+import { Observable } from 'rxjs/internal/Observable';
+import { startWith } from 'rxjs/internal/operators/startWith';
+import { map } from 'rxjs/internal/operators/map';
+import { Console } from 'console';
 
 const ELEMENT_SCHEMA: { [key: string]: string } = {
   "firstName": "text",
@@ -38,6 +42,8 @@ export class ShareSellComponent implements OnInit {
   dataSchema = ELEMENT_SCHEMA;
 
   public itemForm: FormGroup;
+  filteredOptions: Observable<StockObject[]>;
+  
   @Input() data: StockObject[];
   @Input() contacts: ContactObject[];
   @ViewChild(MatSort) sort: MatSort;
@@ -75,6 +81,17 @@ export class ShareSellComponent implements OnInit {
     this.itemForm.get('amountCtrl')?.valueChanges.subscribe(() => {
       this.step = 3;
     });
+
+    this.filteredOptions = this.itemForm.get('titleCtrl')!.valueChanges.pipe(
+      startWith(''),
+      map(value => {
+        if(this._filter(value) == undefined) {
+          return this.data;
+        } else {
+          return this._filter(value);
+        }
+      }),
+    );
   }
 
   onReset() {
@@ -84,6 +101,7 @@ export class ShareSellComponent implements OnInit {
 
   onSubmit() {
     let title: StockObject = this.itemForm.get('titleCtrl')?.value;
+    console.log(title);
     let amount: number = this.itemForm.get('amountCtrl')?.value;
     let status: string = this.itemForm.get('statusCtrl')?.value;
     let date: Moment = this.itemForm.get('dateCtrl')?.value;
@@ -136,5 +154,10 @@ export class ShareSellComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
     });
+  }
+
+  private _filter(value: string): StockObject[] {
+    const filterValue = value.toLowerCase();
+    return (this.data.filter(element => element.name.toLowerCase().includes(filterValue)));
   }
 }
