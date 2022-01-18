@@ -70,9 +70,13 @@ export class ShareSellComponent implements OnInit {
       dateCtrl: ["", [Validators.required]],
     });
 
-    this.itemForm.get('titleCtrl')?.valueChanges.subscribe((value: StockObject) => {
+    this.itemForm.get('titleCtrl')?.valueChanges.subscribe((value: string) => {
       this.step = 1;
-      this.max = value.quantity;
+
+      // Retrieve quantity from string value
+      var regExp = /\(([^)]+)\)/;
+      var matches = regExp.exec(value);
+      this.max = parseInt(matches ? matches[1] : "0");
     });
 
     this.itemForm.get('statusCtrl')?.valueChanges.subscribe(() => {
