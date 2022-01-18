@@ -105,13 +105,13 @@ export class ShareSellComponent implements OnInit {
   }
 
   onSubmit() {
-    let title: StockObject = this.itemForm.get('titleCtrl')?.value;
-    console.log(title);
+    let title: string = this.itemForm.get('titleCtrl')?.value;
     let amount: number = this.itemForm.get('amountCtrl')?.value;
     let status: string = this.itemForm.get('statusCtrl')?.value;
     let date: Moment = this.itemForm.get('dateCtrl')?.value;
     
-    this.history.push({name:title.name, quantity:amount, status:status, date:date.format("DD/MM/YYYY")});
+    let formatTitle = title.split(" ");
+    this.history.push({name:formatTitle[0], quantity:amount, status:status, date:date.format("DD/MM/YYYY")});
     this.onReset();
   }
   
