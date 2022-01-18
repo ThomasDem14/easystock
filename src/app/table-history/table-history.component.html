@@ -1,0 +1,48 @@
+<article>
+    <h2 class="page-header">History table</h2>
+
+    <div class="control has-icons-left has-icons-right">
+        <input [(ngModel)]="filter" (ngModelChange)="filterChanged(filter)" class="input is-medium" type="text" placeholder="Search item...">
+        <span class="icon is-medium is-left">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z2" style="margin-bottom: 10px;" matSort>
+
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
+      </ng-container>
+    
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Submission Time </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.name}}  </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="quantity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.quantity}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> End Date </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.status}}  </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="isEdit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Granted </mat-header-cell>
+            <mat-cell *matCellDef="let row" > </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
+            'in_color' : row.status == 'IN',
+            'shared_color' : row.status == 'SHARED',
+            'sold_color' : row.status == 'SOLD'
+          }">
+            
+          </mat-row>
+        </mat-table>
+</article>
+  
