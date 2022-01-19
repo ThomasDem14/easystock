@@ -28,6 +28,7 @@ export class EditDialogComponent implements OnInit {
       quantityControl: new FormControl(this.dataObject.element.quantity, [Validators.required, Validators.min(1)]),
       nameControl: new FormControl(this.dataObject.element.name, [Validators.required,]),
       statusControl: new FormControl(this.dataObject.element.status, [Validators.required,]),
+      dateControl: new FormControl(this.dataObject.element.date, [Validators.required,]),
     });
   }
 
@@ -39,6 +40,7 @@ export class EditDialogComponent implements OnInit {
     this.dataObject.element.name = this.itemForm.get('nameControl')?.value;
     this.dataObject.element.quantity = this.itemForm.get('quantityControl')?.value;
     this.dataObject.element.status = this.itemForm.get('statusControl')?.value;
+    this.dataObject.element.date = this.itemForm.get('dateControl')?.value;
     this.dialogRef.close();
   }
 
@@ -61,6 +63,12 @@ export class EditDialogComponent implements OnInit {
   getStatusErrorMessage() {
     if (this.itemForm.get('statusControl')?.hasError('required')) {
       return 'You must enter a value';
+    }
+    return '';
+  }
+  getDateErrorMessage() {
+    if (this.itemForm.get('dateControl')?.hasError('required')) {
+      return 'You must enter a date';
     }
     return '';
   }
