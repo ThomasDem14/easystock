@@ -13,6 +13,10 @@ mat-form-field {
     margin-bottom: 10px;
 }
 
+.table-wrapper {
+    overflow:auto;
+}
+
 button:hover {
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     background-color: #00bf70;
@@ -39,7 +43,6 @@ table.mat-table {
 
 table {
     width: 100%;
-    border-collapse: collapse;
     border-radius: 10px;
 }
 
@@ -68,7 +71,7 @@ td.mat-cell {
     color: white;
     text-transform: uppercase;
     font-size: x-large;
-    padding: 20px;
+    padding: 1%;
 }
 
 .page-header {
@@ -125,6 +128,17 @@ td.mat-cell {
             width: 100%;
         }
     }
+
+    section {
+        float: bottom;
+        width: 100%;
+    }
+    
+    aside {
+        float: top;
+        width: 100%;
+        margin-bottom: 15px
+    }
 }
 
 .edit-button:hover {
@@ -137,7 +151,11 @@ td.mat-cell {
 .insert-button {
     position: relative;
     float: right;
-    margin: -52px -28px 10px 0px;
+    margin: -28px -28px 10px 0px;
     background-color: #00bf71;
     color: white;
+}
+
+.reset-button {
+    margin-right: 10px;
 }

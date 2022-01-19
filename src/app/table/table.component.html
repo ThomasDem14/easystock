@@ -8,6 +8,7 @@
     </span>
   </div>
 
+  <div class="table-wrapper">
   <table mat-table [dataSource]="dataSource" matSort class="table">
     <!-- Loop through columns to display them dynamically -->
     <!-- displayedColumns is a variable declared in the TS file -->
@@ -36,6 +37,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row"></tr>
   </table>
+  </div>
 
   <button class="insert-button" mat-fab (click)="openDialog()">
     <mat-icon>add</mat-icon>
