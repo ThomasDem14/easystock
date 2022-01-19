@@ -11,3 +11,39 @@
 .sold_color {
     background-color: rgb(254, 69, 69);
 } 
+
+@media(max-width: 600px) {
+    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+        padding-left: 13px;
+    }
+
+    .element-label {
+        width: 90px;
+        display: inline-block;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .element-value {
+        padding-left: 25px;
+        overflow: scroll;
+    }
+
+    .mat-header-row {
+        display: none;
+    }
+
+    .mat-row {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        justify-content: stretch;
+        justify-items: start;
+        display: grid;
+        td:last-of-type {
+            text-align: left;
+            border-bottom: 0.15rem solid #43557b;
+            width: 100%;
+        }
+    }
+}

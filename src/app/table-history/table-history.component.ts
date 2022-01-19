@@ -8,7 +8,6 @@ const ELEMENT_SCHEMA: { [key: string]: string } = {
   "quantity": "number",
   "status": "text",
   "date": "text",
-  "isEdit": "isEdit"
 };
 
 @Component({
@@ -23,7 +22,7 @@ export class TableHistoryComponent implements OnInit {
 
   filter: string;
 
-  displayedColumns: string[] = ['date', 'name', 'quantity', 'status', 'isEdit'];
+  displayedColumns: string[] = ['date', 'name', 'quantity', 'status'];
   dataSchema = ELEMENT_SCHEMA;
 
   constructor() { }
