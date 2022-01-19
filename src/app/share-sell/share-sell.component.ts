@@ -11,6 +11,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { startWith } from 'rxjs/internal/operators/startWith';
 import { map } from 'rxjs/internal/operators/map';
 import { Console } from 'console';
+import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component';
 
 const ELEMENT_SCHEMA: { [key: string]: string } = {
   "firstName": "text",
@@ -43,7 +44,8 @@ export class ShareSellComponent implements OnInit {
 
   public itemForm: FormGroup;
   filteredOptions: Observable<StockObject[]>;
-
+  filteredOptionsContact: Observable<ContactObject[]>;
+  
   @Input() data: StockObject[];
   @Input() contacts: ContactObject[];
   @Input() history: any[];
@@ -68,6 +70,7 @@ export class ShareSellComponent implements OnInit {
       amountCtrl: ["", [Validators.required]],
       statusCtrl: ["", [Validators.required]],
       dateCtrl: ["", [Validators.required]],
+      contactCtrl: ["", [Validators.required]],
     });
 
     this.itemForm.get('titleCtrl')?.valueChanges.subscribe((value: string) => {
@@ -83,8 +86,13 @@ export class ShareSellComponent implements OnInit {
       this.step = 2;
     });
 
-    this.itemForm.get('amountCtrl')?.valueChanges.subscribe(() => {
+    
+    this.itemForm.get('contactCtrl')?.valueChanges.subscribe(() => {
       this.step = 3;
+    });
+
+    this.itemForm.get('amountCtrl')?.valueChanges.subscribe(() => {
+      this.step = 4;
     });
 
     this.filteredOptions = this.itemForm.get('titleCtrl')!.valueChanges.pipe(
@@ -97,6 +105,17 @@ export class ShareSellComponent implements OnInit {
         }
       }),
     );
+
+    this.filteredOptionsContact = this.itemForm.get('contactCtrl')!.valueChanges.pipe(
+      startWith(''),
+      map(value => {
+        if(this._filterContact(value) == undefined) {
+          return this.contacts;
+        } else {
+          return this._filterContact(value);
+        }
+      }),
+    );
   }
 
   onReset() {
@@ -104,6 +123,7 @@ export class ShareSellComponent implements OnInit {
       titleCtrl: "",
       amountCtrl: "",
       statusCtrl: "",
+      contactCtrl: "",
       dateCtrl: null,
     });
     this.step = 0;
@@ -113,11 +133,12 @@ export class ShareSellComponent implements OnInit {
     let title: string = this.itemForm.get('titleCtrl')?.value;
     let amount: number = this.itemForm.get('amountCtrl')?.value;
     let status: string = this.itemForm.get('statusCtrl')?.value;
+    let contact: string = this.itemForm.get('contactCtrl')?.value;
     let date: Moment = this.itemForm.get('dateCtrl')?.value;
 
     let regExp = /(.*) \([0-9]+\)/;
     var formatTitle = regExp.exec(title)![1];
-    let formatStatus = status === "Sell" ? "SOLD" : "SHARED";
+    let formatStatus = status === "Sell" ? "Sold to " + contact : "Shared to " + contact;
 
     let newObject: StockObject = { name: formatTitle, quantity: amount, status: formatStatus, date: date };
 
@@ -180,5 +201,22 @@ export class ShareSellComponent implements OnInit {
   private _filter(value: string): StockObject[] {
     const filterValue = value.toLowerCase();
     return (this.data.filter(element => element.name.toLowerCase().includes(filterValue)));
+  }
+
+  private _filterContact(value: string): ContactObject[] {
+    const filterValue = value.toLowerCase();
+    return (this.contacts.filter(element => ((element.firstName.toLowerCase().includes(filterValue)) || (element.lastName.toLowerCase().includes(filterValue)))));
+  }
+
+  removeRow(element: ContactObject) {
+    this.dialog.open(RemoveDialogComponent).afterClosed().subscribe(confirm => {
+      if (confirm) {
+        const index = this.contacts.findIndex(el => el === element)
+        if (index > -1) {
+          this.contacts.splice(index, 1);
+        }
+        this.resetDataSource(this.contacts);
+      }
+    });
   }
 }

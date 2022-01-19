@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { InsertDialogComponent } from '../insert-dialog/insert-dialog.component';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { Moment } from 'moment';
+import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component';
 
 export interface StockObject {
   name: string;
@@ -33,8 +34,8 @@ export class TableComponent implements OnInit {
     "IN", "SOLD", "SHARED",
   ];
 
-  @Input() data: any[];
-  @Input() history: any[];
+  @Input() data: StockObject[];
+  @Input() history: StockObject[];
 
   dataSource: MatTableDataSource<StockObject>;
 
@@ -103,6 +104,18 @@ export class TableComponent implements OnInit {
       return s.name && s.name.toLowerCase().includes(filterValue);
     });
     this.resetDataSource(display);
+  }
+
+  removeRow(element: StockObject) {
+    this.dialog.open(RemoveDialogComponent).afterClosed().subscribe(confirm => {
+      if (confirm) {
+        const index = this.data.findIndex(el => el === element)
+        if (index > -1) {
+          this.data.splice(index, 1);
+        }
+        this.resetDataSource(this.data);
+      }
+    });
   }
 }
 

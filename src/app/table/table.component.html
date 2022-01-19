@@ -25,6 +25,7 @@
           <!-- content of isEdit column -->
           <div class="btn-edit" *ngSwitchCase="'isEdit'">
             <button class="edit-button" mat-raised-button (click)="openEditDialog(element)">Edit</button>
+            <button mat-button class="delete-button" mat-raised-button (click)="removeRow(element)">Delete</button>
           </div>
           <!-- content of data column -->
           <span *ngSwitchCase="'Moment'">
