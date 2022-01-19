@@ -14,8 +14,14 @@ import { ShareSellComponent } from './share-sell/share-sell.component';
 import { EditContactDialogComponent } from './edit-contact-dialog/edit-contact-dialog.component';
 import { InsertContactDialogComponent } from './insert-contact-dialog/insert-contact-dialog.component';
 import { TableHistoryComponent } from './table-history/table-history.component';
+import { MatFormFieldDefaultOptions, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+
+const appearance: MatFormFieldDefaultOptions = {
+  appearance: 'outline'
+};
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     InsertDialogComponent,
@@ -34,7 +40,12 @@ import { TableHistoryComponent } from './table-history/table-history.component';
     ReactiveFormsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: appearance
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

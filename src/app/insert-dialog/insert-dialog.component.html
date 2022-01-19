@@ -1,15 +1,15 @@
 <h1 mat-dialog-title>Insert an item</h1>
 <div mat-dialog-content>
   <form [formGroup]="this.itemForm">
-    <mat-form-field appearance="outline">
+    <mat-form-field>
       <mat-label>Name of the item</mat-label>
       <input matInput required formControlName="titleCtrl">
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field>
       <mat-label>Amount</mat-label>
         <input matInput type="number" required formControlName="amountCtrl">
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field>
       <mat-label>Status</mat-label>
       <mat-select required formControlName="statusCtrl">
         <mat-option *ngFor="let status of this.tableComponent.statusList" [value]="status">
@@ -17,7 +17,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field>
       <mat-label>Date</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="dateCtrl">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

@@ -12,9 +12,12 @@ table.mat-table {
       border: solid 1px #00bf71;
 }
 
+.table-wrapper {
+    overflow:auto;
+}
+
 table {
     width: 100%;
-    border-collapse: collapse;
     border-radius: 10px;
 }
 
@@ -43,7 +46,7 @@ td.mat-cell {
     color: white;
     text-transform: uppercase;
     font-size: x-large;
-    padding: 20px;
+    padding: 1%;
 }
 
 .page-header {
@@ -105,7 +108,7 @@ td.mat-cell {
 .insert-button {
     position: relative;
     float: right;
-    margin: -52px -28px 10px 0px;
+    margin: -30px -28px 10px 0px;
     background-color: #00bf71;
     color: white;
 }
