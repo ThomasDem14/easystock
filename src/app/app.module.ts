@@ -15,6 +15,7 @@ import { EditContactDialogComponent } from './edit-contact-dialog/edit-contact-d
 import { InsertContactDialogComponent } from './insert-contact-dialog/insert-contact-dialog.component';
 import { TableHistoryComponent } from './table-history/table-history.component';
 import { MatFormFieldDefaultOptions, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { RemoveDialogComponent } from './remove-dialog/remove-dialog.component';
 
 const appearance: MatFormFieldDefaultOptions = {
   appearance: 'outline'
@@ -31,6 +32,7 @@ const appearance: MatFormFieldDefaultOptions = {
     EditContactDialogComponent,
     InsertContactDialogComponent,
     TableHistoryComponent,
+    RemoveDialogComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -1,6 +1,6 @@
 <aside>
-  <h2>Share or sell an item</h2>
-  <form [formGroup]="this.itemForm">
+  <h2 class="page-header">Share or sell an item</h2>
+  <form [formGroup]="this.itemForm" class="share-form">
     <div>
       <h4>Which item do you want to use?</h4>
       <mat-form-field>
@@ -13,7 +13,6 @@
             {{item.name + " (" + item.quantity + ")"}}
           </mat-option>
         </mat-autocomplete>
-
       </mat-form-field>
     </div>
 
@@ -30,6 +29,21 @@
     </div>
 
     <div *ngIf="this.step > 1">
+      <h4>To who?</h4>
+      <mat-form-field>
+        <mat-label>Select the contact</mat-label>
+        <input type="text" placeholder="Pick one" aria-label="Item" matInput
+          [formControl]="$any(this.itemForm).get('contactCtrl')" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let item of this.filteredOptionsContact | async"
+            [value]="item.firstName + ' ' + item.lastName">
+            {{item.firstName + ' ' + item.lastName}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="this.step > 2">
       <h4>In what amount?</h4>
       <mat-form-field>
         <mat-label>Amount</mat-label>
@@ -37,7 +51,7 @@
       </mat-form-field>
     </div>
 
-    <div *ngIf="this.step > 2">
+    <div *ngIf="this.step > 3">
       <h4>Select the date of the transaction</h4>
       <mat-form-field>
         <mat-label>Date</mat-label>
@@ -55,7 +69,7 @@
 </aside>
 
 <section class="contactTable">
-  <h2 class="page-header">Share or Sell an item</h2>
+  <h2 class="page-header">Table of contacts</h2>
   <div class="control has-icons-left has-icons-right">
     <input [(ngModel)]="filter" (ngModelChange)="filterChanged(filter)" class="input is-medium" type="text"
       placeholder="Search item...">
@@ -91,6 +105,7 @@
             <!-- content of isEdit column -->
             <div class="btn-edit" *ngSwitchCase="'isEdit'">
               <button class="edit-button" mat-raised-button (click)="openEditDialog(element)">Edit</button>
+              <button mat-button class="delete-button" mat-raised-button (click)="removeRow(element)">Delete</button>
             </div>
             <!-- content of data column -->
             <span *ngSwitchDefault>

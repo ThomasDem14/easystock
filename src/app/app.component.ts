@@ -11,11 +11,6 @@ import { StockObject } from './table/table.component';
 })
 export class AppComponent {
 
-  notifications = [
-    { id: 1, message: 'This is the first notification' },
-    { id: 2, message: 'This is the second notification' },
-  ];
-
   data: StockObject[] = [
     {name:'Headphone', quantity:1, status: 'IN', date:moment("30/12/2021", "DD/MM/YYYY")},
     {name:'Table', quantity:1, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},

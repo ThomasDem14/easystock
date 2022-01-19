@@ -1,0 +1,10 @@
+.delete-button:hover {
+    box-shadow: 0px 15px 20px rgba(122, 24, 44, 0.4);
+    background-color: #ff3860;
+    color: white;
+    transform: translateY(-5px);
+}
+
+.close-button:hover {
+    transform: translateY(-5px);
+}
