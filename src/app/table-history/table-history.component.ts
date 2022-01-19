@@ -54,5 +54,4 @@ export class TableHistoryComponent implements OnInit {
     this.dataSource = new MatTableDataSource<StockObject>(data);
     this.dataSource.sort = this.sort;
   }
-
 }

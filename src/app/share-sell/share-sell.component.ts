@@ -147,6 +147,11 @@ export class ShareSellComponent implements OnInit {
       if (index > -1) {
         this.data.splice(index, 1);
       }
+    } else {
+      const index = this.data.findIndex(el => el.name === newObject.name)
+      if (index > -1) {
+        this.data[index].status = "Shared";
+      }
     }
     this.history.push(newObject);
     this.onReset();
