@@ -7,8 +7,7 @@ const ELEMENT_SCHEMA: { [key: string]: string } = {
   "name": "text",
   "quantity": "number",
   "status": "text",
-  "date": "text",
-  "isEdit": "isEdit"
+  "date": "text"
 };
 
 @Component({
@@ -23,7 +22,7 @@ export class TableHistoryComponent implements OnInit {
 
   filter: string;
 
-  displayedColumns: string[] = ['date', 'name', 'quantity', 'status', 'isEdit'];
+  displayedColumns: string[] = ['date', 'name', 'quantity', 'status'];
   dataSchema = ELEMENT_SCHEMA;
 
   constructor() { }
@@ -33,6 +32,10 @@ export class TableHistoryComponent implements OnInit {
   }
 
   @ViewChild(MatSort) sort: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
 
   filterChanged(filterValue: string) {
     if (filterValue == "") {
@@ -46,8 +49,6 @@ export class TableHistoryComponent implements OnInit {
     });
     this.resetDataSource(display);
   }
-
-
 
   resetDataSource(data: any) {
     this.dataSource = new MatTableDataSource<StockObject>(data);

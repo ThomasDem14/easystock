@@ -76,7 +76,7 @@ export class ShareSellComponent implements OnInit {
       // Retrieve quantity from string value
       var regExp = /\(([^)]+)\)/;
       var matches = regExp.exec(value);
-      this.max = parseInt(matches ? matches[1] : "0");
+      this.max = parseInt(matches ? matches[1] : "1");
     });
 
     this.itemForm.get('statusCtrl')?.valueChanges.subscribe(() => {
@@ -100,7 +100,12 @@ export class ShareSellComponent implements OnInit {
   }
 
   onReset() {
-    this.itemForm.reset();
+    this.itemForm.setValue({
+      titleCtrl: "",
+      amountCtrl: "",
+      statusCtrl: "",
+      dateCtrl: null,
+    });
     this.step = 0;
   }
 
@@ -111,7 +116,7 @@ export class ShareSellComponent implements OnInit {
     let date: Moment = this.itemForm.get('dateCtrl')?.value;
     
     let formatTitle = title.split(" ");
-    this.history.push({name:formatTitle[0], quantity:amount, status:status, date:date.format("DD/MM/YYYY")});
+    this.history.push({name:formatTitle[0], quantity:amount, status:status, date:date});
     this.onReset();
   }
   

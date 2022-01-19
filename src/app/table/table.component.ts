@@ -4,19 +4,20 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { InsertDialogComponent } from '../insert-dialog/insert-dialog.component';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { Moment } from 'moment';
 
 export interface StockObject {
   name: string;
   quantity: number;
   status: string;
-  date: string;
+  date: Moment;
 }
 
 const ELEMENT_SCHEMA: { [key: string]: string } = {
   "name": "text",
   "quantity": "number",
   "status": "text",
-  "date": "text",
+  "date": "Moment",
   "isEdit": "isEdit"
 };
 

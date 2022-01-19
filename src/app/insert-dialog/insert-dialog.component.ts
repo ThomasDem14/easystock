@@ -39,7 +39,7 @@ export class InsertDialogComponent implements OnInit {
     let status: string = this.itemForm.get('statusCtrl')?.value;
     let date: Moment = this.itemForm.get('dateCtrl')?.value;
 
-    this.tableComponent.push({name:title, quantity:amount, status:status, date:date.format("DD/MM/YYYY")});
+    this.tableComponent.push({name:title, quantity:amount, status:status, date:date});
 
     this.dialogRef.close();
   }

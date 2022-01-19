@@ -26,6 +26,10 @@
             <button class="edit-button" mat-raised-button (click)="openEditDialog(element)">Edit</button>
           </div>
           <!-- content of data column -->
+          <span *ngSwitchCase="'Moment'">
+            <span class="element-label">{{col}}</span>
+            <span class="element-value">{{element[col].format("DD/MM/YYYY")}}</span>
+          </span>
           <span *ngSwitchDefault>
             <span class="element-label">{{col}}</span>
             <span class="element-value">{{element[col]}}</span>

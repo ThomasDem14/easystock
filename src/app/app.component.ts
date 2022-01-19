@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment';
 import { ContactObject } from './share-sell/share-sell.component';
 import { StockObject } from './table/table.component';
 
@@ -16,22 +17,22 @@ export class AppComponent {
   ];
 
   data: StockObject[] = [
-    {name:'Headphone', quantity:1, status: 'IN', date:"06/01/2022"},
-    {name:'Table', quantity:1, status: 'IN', date:"09/01/2022"},
-    {name:'Chairs', quantity:4, status: 'SHARED', date:"26/12/2021"},
-    {name:'Phone', quantity:2, status: 'IN', date:"30/12/2021"},
+    {name:'Headphone', quantity:1, status: 'IN', date:moment("30/12/2021", "DD/MM/YYYY")},
+    {name:'Table', quantity:1, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},
+    {name:'Chairs', quantity:4, status: 'SHARED', date:moment("08/01/2022", "DD/MM/YYYY")},
+    {name:'Phone', quantity:2, status: 'IN', date:moment("19/01/2022", "DD/MM/YYYY")},
   ];
 
   history: StockObject[] = [
-    {name:'Headphone', quantity:1, status: 'IN', date:"06/01/2022"},
-    {name:'Table', quantity:1, status: 'IN', date:"09/01/2022"},
-    {name:'Chairs', quantity:4, status: 'IN', date:"23/12/2021"},
-    {name:'Chairs', quantity:4, status: 'SHARED', date:"26/12/2021"},
-    {name:'Phone', quantity:2, status: 'IN', date:"12/12/2021"},
-    {name:'Phone', quantity:2, status: 'SHARED', date:"13/12/2021"},
-    {name:'Phone', quantity:2, status: 'BACKIN', date:"30/12/2021"},
-    {name:'Computer', quantity:1, status: 'IN', date:"16/01/2022"},
-    {name:'Computer', quantity:1, status: 'SOLD', date:"18/01/2022"},
+    {name:'Headphone', quantity:1, status: 'IN', date:moment("30/12/2021", "DD/MM/YYYY")},
+    {name:'Table', quantity:1, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},
+    {name:'Chairs', quantity:4, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},
+    {name:'Chairs', quantity:4, status: 'SHARED', date:moment("08/01/2022", "DD/MM/YYYY")},
+    {name:'Phone', quantity:2, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},
+    {name:'Phone', quantity:2, status: 'SHARED', date:moment("09/01/2022", "DD/MM/YYYY")},
+    {name:'Phone', quantity:2, status: 'BACKIN', date:moment("19/01/2022", "DD/MM/YYYY")},
+    {name:'Computer', quantity:1, status: 'IN', date:moment("10/01/2022", "DD/MM/YYYY")},
+    {name:'Computer', quantity:1, status: 'SOLD', date:moment("13/01/2022", "DD/MM/YYYY")},
   ];
 
   contacts: ContactObject[] = [
