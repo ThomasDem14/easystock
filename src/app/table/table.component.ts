@@ -31,7 +31,7 @@ const ELEMENT_SCHEMA: { [key: string]: string } = {
 export class TableComponent implements OnInit {
 
   public statusList = [
-    "IN", "SOLD", "SHARED",
+    "In stock", "Sold", "Shared",
   ];
 
   @Input() data: StockObject[];
@@ -83,7 +83,7 @@ export class TableComponent implements OnInit {
     const dialogRef = this.editDialog.open(EditDialogComponent, {
       width: 'auto',
       data: {
-        statusList: this.statusList,
+        table: this,
         element: element,
       },
     });

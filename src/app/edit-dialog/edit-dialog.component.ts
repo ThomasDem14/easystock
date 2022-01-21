@@ -4,7 +4,7 @@ import { StockObject, TableComponent } from '../table/table.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DataObject {
-  statusList: string[];
+  table: TableComponent;
   element: StockObject;
 }
 
@@ -41,6 +41,11 @@ export class EditDialogComponent implements OnInit {
     this.dataObject.element.quantity = this.itemForm.get('quantityControl')?.value;
     this.dataObject.element.status = this.itemForm.get('statusControl')?.value;
     this.dataObject.element.date = this.itemForm.get('dateControl')?.value;
+
+    if (this.dataObject.element.status === "In stock") {
+      this.dataObject.table.history.push(this.dataObject.element);
+    }
+
     this.dialogRef.close();
   }
 

@@ -12,22 +12,22 @@ import { StockObject } from './table/table.component';
 export class AppComponent {
 
   data: StockObject[] = [
-    {name:'Headphone', quantity:1, status: 'IN', date:moment("30/12/2021", "DD/MM/YYYY")},
-    {name:'Table', quantity:1, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},
-    {name:'Chairs', quantity:4, status: 'SHARED', date:moment("08/01/2022", "DD/MM/YYYY")},
-    {name:'Phone', quantity:2, status: 'IN', date:moment("19/01/2022", "DD/MM/YYYY")},
+    {name:'Headphone', quantity:1, status: 'In stock', date:moment("30/12/2021", "DD/MM/YYYY")},
+    {name:'Table', quantity:1, status: 'In stock', date:moment("06/01/2022", "DD/MM/YYYY")},
+    {name:'Chairs', quantity:4, status: 'Shared', date:moment("08/01/2022", "DD/MM/YYYY")},
+    {name:'Phone', quantity:2, status: 'In stock', date:moment("19/01/2022", "DD/MM/YYYY")},
   ];
 
   history: StockObject[] = [
-    {name:'Headphone', quantity:1, status: 'IN', date:moment("30/12/2021", "DD/MM/YYYY")},
-    {name:'Table', quantity:1, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},
-    {name:'Chairs', quantity:4, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},
-    {name:'Chairs', quantity:4, status: 'SHARED', date:moment("08/01/2022", "DD/MM/YYYY")},
-    {name:'Phone', quantity:2, status: 'IN', date:moment("06/01/2022", "DD/MM/YYYY")},
-    {name:'Phone', quantity:2, status: 'SHARED', date:moment("09/01/2022", "DD/MM/YYYY")},
-    {name:'Phone', quantity:2, status: 'BACKIN', date:moment("19/01/2022", "DD/MM/YYYY")},
-    {name:'Computer', quantity:1, status: 'IN', date:moment("10/01/2022", "DD/MM/YYYY")},
-    {name:'Computer', quantity:1, status: 'SOLD', date:moment("13/01/2022", "DD/MM/YYYY")},
+    {name:'Headphone', quantity:1, status: 'In stock', date:moment("30/12/2021", "DD/MM/YYYY")},
+    {name:'Table', quantity:1, status: 'In stock', date:moment("06/01/2022", "DD/MM/YYYY")},
+    {name:'Chairs', quantity:4, status: 'In stock', date:moment("06/01/2022", "DD/MM/YYYY")},
+    {name:'Chairs', quantity:4, status: 'Shared to Guillaume Lodrini', date:moment("08/01/2022", "DD/MM/YYYY")},
+    {name:'Phone', quantity:2, status: 'In stock', date:moment("06/01/2022", "DD/MM/YYYY")},
+    {name:'Phone', quantity:2, status: 'Shared to Thomas Demoulin', date:moment("09/01/2022", "DD/MM/YYYY")},
+    {name:'Phone', quantity:2, status: 'In stock', date:moment("19/01/2022", "DD/MM/YYYY")},
+    {name:'Computer', quantity:1, status: 'In stock', date:moment("10/01/2022", "DD/MM/YYYY")},
+    {name:'Computer', quantity:1, status: 'Sold to Vincent Labarre', date:moment("13/01/2022", "DD/MM/YYYY")},
   ];
 
   contacts: ContactObject[] = [

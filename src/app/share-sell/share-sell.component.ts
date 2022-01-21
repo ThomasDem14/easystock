@@ -98,7 +98,7 @@ export class ShareSellComponent implements OnInit {
     this.filteredOptions = this.itemForm.get('titleCtrl')!.valueChanges.pipe(
       startWith(''),
       map(value => {
-        if(this._filter(value) == undefined) {
+        if (this._filter(value) == undefined) {
           return this.data;
         } else {
           return this._filter(value);
@@ -133,13 +133,30 @@ export class ShareSellComponent implements OnInit {
     let title: string = this.itemForm.get('titleCtrl')?.value;
     let amount: number = this.itemForm.get('amountCtrl')?.value;
     let status: string = this.itemForm.get('statusCtrl')?.value;
+    let contact: string = this.itemForm.get('contactCtrl')?.value;
     let date: Moment = this.itemForm.get('dateCtrl')?.value;
-    
-    let formatTitle = title.split(" ");
-    this.history.push({name:formatTitle[0], quantity:amount, status:status, date:date});
+
+    let regExp = /(.*) \([0-9]+\)/;
+    var formatTitle = regExp.exec(title)![1];
+    let formatStatus = status === "Sell" ? "Sold to " + contact : "Shared to " + contact;
+
+    let newObject: StockObject = { name: formatTitle, quantity: amount, status: formatStatus, date: date };
+
+    if (status === "Sell") {
+      const index = this.data.findIndex(el => el.name === newObject.name)
+      if (index > -1) {
+        this.data.splice(index, 1);
+      }
+    } else {
+      const index = this.data.findIndex(el => el.name === newObject.name)
+      if (index > -1) {
+        this.data[index].status = "Shared";
+      }
+    }
+    this.history.push(newObject);
     this.onReset();
   }
-  
+
   filterChanged(filterValue: string) {
     if (filterValue == "") {
       this.resetDataSource(this.contacts);
@@ -149,7 +166,7 @@ export class ShareSellComponent implements OnInit {
     filterValue = filterValue.toLowerCase();
     let display = this.contacts.filter(s => {
       return (s.firstName && s.firstName.toLowerCase().includes(filterValue)) || (s.lastName && s.lastName.toLowerCase().includes(filterValue))
-      || (s.email && s.email.toLowerCase().includes(filterValue));
+        || (s.email && s.email.toLowerCase().includes(filterValue));
     });
     this.resetDataSource(display);
   }
