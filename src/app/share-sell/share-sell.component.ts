@@ -45,7 +45,7 @@ export class ShareSellComponent implements OnInit {
   public itemForm: FormGroup;
   filteredOptions: Observable<StockObject[]>;
   filteredOptionsContact: Observable<ContactObject[]>;
-  
+
   @Input() data: StockObject[];
   @Input() contacts: ContactObject[];
   @Input() history: any[];
@@ -86,7 +86,7 @@ export class ShareSellComponent implements OnInit {
       this.step = 2;
     });
 
-    
+
     this.itemForm.get('contactCtrl')?.valueChanges.subscribe(() => {
       this.step = 3;
     });
@@ -109,7 +109,7 @@ export class ShareSellComponent implements OnInit {
     this.filteredOptionsContact = this.itemForm.get('contactCtrl')!.valueChanges.pipe(
       startWith(''),
       map(value => {
-        if(this._filterContact(value) == undefined) {
+        if (this._filterContact(value) == undefined) {
           return this.contacts;
         } else {
           return this._filterContact(value);
@@ -142,19 +142,27 @@ export class ShareSellComponent implements OnInit {
 
     let newObject: StockObject = { name: formatTitle, quantity: amount, status: formatStatus, date: date };
 
-    if (status === "Sell") {
-      const index = this.data.findIndex(el => el.name === newObject.name)
-      if (index > -1) {
-        this.data.splice(index, 1);
+    const index = this.data.findIndex(el => el.name === newObject.name)
+    if (index > -1) {
+      let curAmount = this.data[index].quantity;
+
+      if (status === "Sell") {
+        if (curAmount == amount) {
+          this.data.splice(index, 1);
+        } else {
+          this.data[index].quantity -= amount;
+        }
+      } else {
+        if (curAmount == amount) {
+          this.data[index].status = "Shared";
+        } else {
+          this.data[index].quantity -= amount;
+          this.data.push(newObject);
+        }
       }
-    } else {
-      const index = this.data.findIndex(el => el.name === newObject.name)
-      if (index > -1) {
-        this.data[index].status = "Shared";
-      }
+      this.history.push(newObject);
+      this.onReset();
     }
-    this.history.push(newObject);
-    this.onReset();
   }
 
   filterChanged(filterValue: string) {
