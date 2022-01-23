@@ -1,0 +1,31 @@
+<article>
+    <h2 class="page-header">Profile page</h2>
+    <div *ngIf="this.login === false">
+        <mat-card>
+            <mat-card-content>
+                <form [formGroup]="this.itemForm" (ngSubmit)="onSubmit()">
+                    <h2 class="page-header">Log In</h2>
+                    <mat-error *ngIf="loginInvalid">
+                        The username and password were not recognised
+                    </mat-error>
+                    <mat-form-field class="full-width-input">
+                        <input matInput placeholder="Email" formControlName="userControl" required>
+                        <mat-error *ngIf="this.itemForm.get('userControl')?.invalid">{{getUserErrorMessage()}}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input">
+                        <input matInput type="password" placeholder="Password" formControlName="passwordControl"
+                            required>
+                        <mat-error *ngIf="this.itemForm.get('passwordControl')?.invalid">{{getPasswordErrorMessage()}}
+                        </mat-error>
+                    </mat-form-field>
+                    <button mat-raised-button>Login</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div *ngIf="this.login === true">
+        <p>Hello {{this.credentialValue.email}}</p>
+        <button mat-raised-button (click)="disconnect()">Disconnect</button>
+    </div>
+</article>

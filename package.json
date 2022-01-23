@@ -22,6 +22,7 @@
     "@angular/router": "~13.1.0",
     "@fortawesome/angular-fontawesome": "^0.10.1",
     "bulma": "^0.9.3",
+    "crypto-es": "^1.2.7",
     "moment": "^2.29.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

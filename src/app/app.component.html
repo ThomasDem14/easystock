@@ -76,7 +76,9 @@
             <div *ngSwitchCase="'share'">
                 <app-share-sell [data]="data" [contacts]="contacts" [history]="history"></app-share-sell>
             </div>
-            <div *ngSwitchCase="'profile'">profile</div>
+            <div *ngSwitchCase="'profile'">
+                <app-login-form  [data]="data" [contacts]="contacts" [history]="history"></app-login-form>
+            </div>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
