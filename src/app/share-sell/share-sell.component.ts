@@ -17,7 +17,7 @@ const ELEMENT_SCHEMA: { [key: string]: string } = {
   "firstName": "text",
   "lastName": "text",
   "email": "text",
-  "phone": "text",
+  "phone": "tel",
   "isEdit": "isEdit"
 };
 

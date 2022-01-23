@@ -18,7 +18,7 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input type="text" matInput required formControlName="phoneControl">
+            <input type="tel" matInput required formControlName="phoneControl">
             <mat-error *ngIf="this.itemForm.get('phoneControl')?.invalid">{{getPhoneErrorMessage()}}</mat-error>
         </mat-form-field>
     </form>
