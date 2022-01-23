@@ -58,7 +58,7 @@ export class LoginFormComponent implements OnInit {
         this.loginInvalid = false;
         let data: CredentialObject = {
           'email': email,
-          'password': password
+          'password': hash
         };
         localStorage.setItem('credentials', JSON.stringify(data));
         this.credentialValue = data;
